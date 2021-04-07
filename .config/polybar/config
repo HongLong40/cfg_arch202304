@@ -63,21 +63,6 @@ format-offset     =
     enable-scroll = true
     reverse-scroll = true
 
-    ;extra icons to choose from
-    ;http://fontawesome.io/cheatsheet/
-
-    ;icon-0 = main;
-    ;icon-1 = sys;
-    ;icon-2 = vim;
-    ;icon-3 = misc;
-    ;icon-4 = vbox;
-    ;icon-5 = remote;
-    ;icon-6 = media;
-    ;icon-7 = 8;
-    ;icon-8 = 9;
-    ;#icon-9 = 10;
-    ;icon-default = " "
-
     format = <label-state>
     format-font = 2
 

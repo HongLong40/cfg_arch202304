@@ -31,4 +31,3 @@ then
     #startx
     startx ~/.xinitrc $wm
 fi
-
