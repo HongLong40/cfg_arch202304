@@ -86,7 +86,7 @@ hc keybind $Mod-Shift-BackSpace shift_to_monitor +1
 hc set default_frame_layout 1
 
 # tags
-tag_names=( "main" "two" "three" "four" "www" "six" "seven" "media" "remote" )
+tag_names=( "main" "two" "code" "four" "www" "six" "seven" "media" "remote" )
 #tag_names=( {1..9} )
 tag_keys=( {1..9} 0 )
 
@@ -174,6 +174,7 @@ hc rule floatplacement=smart
 #hc rule class~'(.*[Rr]xvt.*|.*[Tt]erm|Konsole)' focus=on
 
 # Clients with fixed tags
+hc rule class=Code tag=code
 hc rule class=Clementine tag=media
 hc rule class=Opera tag=www
 hc rule class=org.remmina.Remmina tag=remote
