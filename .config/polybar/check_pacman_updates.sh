@@ -32,7 +32,7 @@ typeset -i last_update_count=-1
 typeset -i curr_update_count=0
 typeset -i counter=1
 
-# Wait for 15s, as polybars need to start up
+# Wait for up to 15s, as polybars need to start up
 while [[ (! -f /tmp/polybar_started) && $counter -le 15 ]]
 do
     echo file not found $counter
@@ -43,11 +43,11 @@ done
 # infinite loop: get updates count, update polybar, sleep until next cycle
 while true
 do
-    curr_update_count=$(checkupdates 2> /dev/null | wc -l | tee /tmp/pacman_updates.count)
+    checkupdates 2> /dev/null > /tmp/pacman_updates
+    curr_update_count=$(wc -l /tmp/pacman_updates)
     
     write_log "Current Update Count: ..$curr_update_count.."
     
-    #echo $(date "+%Y-%m-%d %T") Current Update Count: ..$curr_update_count.. >> $LOG
     if [[ ($last_update_count -ne $curr_update_count) ]]
     then
         last_update_count=$curr_update_count
