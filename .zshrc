@@ -4,6 +4,9 @@
 ZSH="/usr/share/zsh/custom"
 fpath=("$ZSH" "$fpath[@]")
 autoload -Uz compinit promptinit; compinit; promptinit
+autoload -Uz vcs_info
+
+zstyle ':vcs_info:git:*' formats ' %F{#d78700}-  %b%f'
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
@@ -107,6 +110,7 @@ zle -N zle-line-finish
 #setopt prompt_subst
 prompt edward yellow
 RPROMPT='${vim_mode}'
+#RPROMPT=\$vcs_info_msg_0_
 
 echo -ne '\e[4 q' # Use underline shape cursor on startup.
 
