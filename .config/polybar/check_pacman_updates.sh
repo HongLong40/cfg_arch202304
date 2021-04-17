@@ -44,7 +44,7 @@ done
 while true
 do
     checkupdates 2> /dev/null > /tmp/pacman_updates
-    curr_update_count=$(wc -l /tmp/pacman_updates)
+    curr_update_count=$(cat /tmp/pacman_updates | wc -l)
     
     write_log "Current Update Count: ..$curr_update_count.."
     
