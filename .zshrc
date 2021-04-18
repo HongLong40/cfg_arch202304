@@ -8,7 +8,8 @@ autoload -Uz vcs_info
 
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' disable-patterns "${(b)HOME}/.cfg(|/*)"
-zstyle ':vcs_info:git:*' formats ' %F{#d78700}-  %b%f'
+zstyle ':vcs_info:git:*' formats ' %F{#d78700}⎇  %b%f'
+#zstyle ':vcs_info:git:*' formats ' %F{#d78700}-  %b%f'
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
