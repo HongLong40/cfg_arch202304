@@ -11,14 +11,6 @@ zstyle ':vcs_info:*' disable-patterns "${(b)HOME}/.cfg(|/*)"
 zstyle ':vcs_info:git:*' formats ' %F{#d78700}⎇  %b%f'
 #zstyle ':vcs_info:git:*' formats ' %F{#d78700}-  %b%f'
 
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
 export LS_COLORS='rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=1;35:st=37;44:ex=01;32:'
@@ -39,9 +31,7 @@ export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
 export EXA_COLORS='uu=35'
 
 # Load custom configurations
-for config_file ($ZSH/*.zsh(N)) {
-    source $config_file
-}
+for config_file ($ZSH/*.zsh(N)) { source $config_file }
 unset config_file
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -61,9 +51,6 @@ bindkey -M viins "$terminfo[kcud1]" history-substring-search-down
 
 # bindkey "^[[1~" beginning-of-line
 # bindkey "^[[4~" end-of-line
-
-alias _='sudo '
-#prompt edward yellow
 
 # vi mode
 # Set cursor style (DECSCUSR), VT520.
@@ -119,8 +106,9 @@ echo -ne '\e[4 q' # Use underline shape cursor on startup.
 
 HISTORY_IGNORE="(ls*|ll*|cd*|cls|exit|poweroff|reboot)"
 
+# ad-hoc aliases
 alias cfg='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-alias exa='exa --group-directories-first'
 alias gs='git status'
 alias gsp='git status --porcelain'
+
 alias hc=herbstclient
