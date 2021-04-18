@@ -6,6 +6,8 @@ fpath=("$ZSH" "$fpath[@]")
 autoload -Uz compinit promptinit; compinit; promptinit
 autoload -Uz vcs_info
 
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:*' disable-patterns "${(b)HOME}/.cfg(|/*)"
 zstyle ':vcs_info:git:*' formats ' %F{#d78700}-  %b%f'
 
 # Uncomment the following line if you want to change the command execution time
@@ -118,4 +120,6 @@ HISTORY_IGNORE="(ls*|ll*|cd*|cls|exit|poweroff|reboot)"
 
 alias cfg='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias exa='exa --group-directories-first'
+alias gs='git status'
+alias gsp='git status --porcelain'
 alias hc=herbstclient
