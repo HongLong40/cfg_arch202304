@@ -78,15 +78,16 @@ prompt_end_char=$prompt_end_ins_char
 function zle-keymap-select {
     vim_mode="${${KEYMAP/vicmd/${vim_cmd_mode}}/(main|viins)/${vim_ins_mode}}"
 
-    if [[ ${KEYMAP} == vicmd ]] {
+    if [[ ${KEYMAP} == vicmd ]]
+    then
         # blinking underline cursor
         prompt_end_char=$prompt_end_cmd_char
         echo -ne '\e[3 q'
-    } else {
+    else
         # underline cursor
         prompt_end_char=$prompt_end_ins_char
         echo -ne '\e[4 q'
-    }
+    fi
 
     zle reset-prompt
 }
