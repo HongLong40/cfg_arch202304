@@ -8,7 +8,8 @@ autoload -Uz vcs_info
 
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' disable-patterns "${(b)HOME}/.cfg(|/*)"
-zstyle ':vcs_info:git:*' formats ' %F{#d78700}⎇  %b%f'
+zstyle ':vcs_info:git:*' formats ' %F{#d78700}on branch %b%f'
+#zstyle ':vcs_info:git:*' formats ' %F{#d78700}⎇  %b%f'
 #zstyle ':vcs_info:git:*' formats ' %F{#d78700}-  %b%f'
 
 # You may need to manually set your language environment
@@ -108,6 +109,7 @@ HISTORY_IGNORE="(ls*|ll*|cd*|cls|exit|poweroff|reboot)"
 
 # ad-hoc aliases
 alias cfg='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias gb='git branch'
 alias gs='git status'
 alias gsp='git status --porcelain'
 
