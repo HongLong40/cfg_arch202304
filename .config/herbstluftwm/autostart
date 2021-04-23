@@ -214,5 +214,6 @@ hc detect_monitors
 # start polybar panels
 ~/.config/polybar/panel.sh &
 
-# set focus to first monitor
+# set focus to first monitor and position mouse top right
 hc focus_monitor 0
+xte 'mousemove 1900 30'
