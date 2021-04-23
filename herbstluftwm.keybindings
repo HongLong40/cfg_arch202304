@@ -5,25 +5,20 @@ MOD + SHIFT + X              open power menu (rofi)
 
 MOD + ENTER                  open terminal
 
-MOD +         { LEFT  | H }  focus left
-MOD +         { DOWN  | J }  focus down
-MOD +         { UP    | K }  focus up
-MOD +         { RIGHT | L }  focus right
-MOD +         { 1..9 }       focus workspace 1..9
+MOD + [SHIFT] + { LEFT  | H }  focus [move] left
+MOD + [SHIFT] + { DOWN  | J }  focus [move] down
+MOD + [SHIFT] + { UP    | K }  focus [move] up
+MOD + [SHIFT] + { RIGHT | L }  focus [move] right
+MOD + [SHIFT] + { 1..9 }       focus [move] workspace 1..9
     
-MOD + SHIFT + { LEFT  | H }  move left
-MOD + SHIFT + { DOWN  | J }  move down
-MOD + SHIFT + { UP    | K }  move up
-MOD + SHIFT + { RIGHT | L }  move right
-MOD + SHIFT + { 1..9 }       move to workspace 1..9
-
 MOD + CTRL  + { LEFT  | H }  resize left
 MOD + CTRL  + { DOWN  | J }  resize down
 MOD + CTRL  + { UP    | K }  resize up
 MOD + CTRL  + { RIGHT | L }  resize right
 
-MOD + U                      split bottom
-MOD + O                      split right
+MOD +      + U               split bottom
+MOD +      + O               split right
+MOD + CTRL + O               split right 0.66
 
 MOD + CTRL  + SPACE          explode frame into sub-frame
 
