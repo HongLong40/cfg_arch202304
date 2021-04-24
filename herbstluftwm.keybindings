@@ -1,42 +1,40 @@
-MOD + SHIFT + Q                quit
-MOD + SHIFT + R                reload
-MOD + SHIFT + C                close focused window
-MOD + SHIFT + X                open power menu (rofi)
+SPR │ SHIFT   │ Q              quit
+SPR │ SHIFT   │ R              reload
+SPR │ SHIFT   │ C              close focused window
+SPR │ SHIFT   │ X              open power menu (rofi)
 
-MOD + ENTER                    open terminal
+SPR │         │ ENTER          open terminal
 
-MOD + [SHIFT] + { LEFT  | H }  focus [move] left
-MOD + [SHIFT] + { DOWN  | J }  focus [move] down
-MOD + [SHIFT] + { UP    | K }  focus [move] up
-MOD + [SHIFT] + { RIGHT | L }  focus [move] right
-MOD + [SHIFT] + { 1..9 }       focus [move] workspace 1..9
+SPR | [SHIFT] │ { ← | H }      focus [move] window left
+                { ↓ | J }                          down
+                { ↑ | K }                          up
+                { → | L }                          right
+                { 1..9 }                           workspace 1..9
     
-MOD +         + BACKSPACE      cycle monitors (focus)
-MOD +  SHIFT  + BACKSPACE      move active window to next monitor
+SPR │         │ BACKSPACE      cycle monitors (focus)
+SPR │ SHIFT   │ BACKSPACE      move active window to next monitor
 
-MOD + CTRL  + { LEFT  | H }    resize left
-MOD + CTRL  + { DOWN  | J }    resize down
-MOD + CTRL  + { UP    | K }    resize up
-MOD + CTRL  + { RIGHT | L }    resize right
+SPR │ CTRL    │ { ← | H }      resize frame left
+                { ↓ | J }                   down
+                { ↑ | K }                   up
+                { → | L }                   right
 
-MOD +      + U                 split bottom
-MOD +      + O                 split right
-MOD + CTRL + O                 split right 0.66
+SPR │         │ U              split bottom
+SPR │ [CTRL]  │ O              split right [0.66]
 
-MOD + CTRL  + SPACE            explode frame into sub-frame
+SPR │ CTRL    │ SPACE          explode frame into sub-frame
 
-MOD + PERIOD                   cycle thru tags left-to-right
-MOD + COMMA                    cycle thru tags right-to-left
-MOD + SPACE                    cycle thru layouts ( V ➔ H ➔ MAX ➔ GRID )
+SPR │         │ SPACE          cycle thru layouts ( V ➔ H ➔ MAX ➔ GRID )
+SPR │         │ PERIOD         cycle thru tags left-to-right
+SPR │         │ COMMA          cycle thru tags right-to-left
 
-MOD + C                        cycle windows in same frame
-MOD +       + TAB              cycle windows on same monitor (clockwise)
-MOD + SHIFT + TAB              cycle windows on same monitor (anti-clockwise)
+SPR │         │ C              cycle windows in same frame
+SPR │ [SHIFT] │ TAB            cycle windows on same monitor +1 [-1]
 
-MOD +         R                remove frame
-MOD +         S                toggle floating (all clients on active tag)
-MOD +         F                toggle fullscreen
-MOD + SHIFT + F                toggle attr clients.focus.floating
-MOD + SHIFT + P                toggle pseudotile
+SPR │         │ R              remove frame
+SPR │         │ S              toggle floating (all clients on active tag)
+SPR │         │ F              toggle fullscreen
+SPR │ SHIFT   │ F              toggle attr clients.focus.floating
+SPR │ SHIFT   │ P              toggle pseudotile
 
-MOD + I                        jump to urgent
+SPR │         │ I              jump to urgent
