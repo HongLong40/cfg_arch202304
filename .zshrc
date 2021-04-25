@@ -8,7 +8,7 @@ autoload -Uz vcs_info
 
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' disable-patterns "${(b)HOME}/.cfg(|/*)"
-zstyle ':vcs_info:git:*' formats ' %F{#d78700}on branch %b%f'
+zstyle ':vcs_info:git:*' formats ' %F{#d78700}%s:%b%f'
 #zstyle ':vcs_info:git:*' formats ' %F{#d78700}⎇  %b%f'
 #zstyle ':vcs_info:git:*' formats ' %F{#d78700}-  %b%f'
 
