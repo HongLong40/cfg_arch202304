@@ -109,6 +109,7 @@ echo -ne '\e[4 q' # Use underline shape cursor on startup.
 HISTORY_IGNORE="(ls*|ll*|cd*|cls|exit|poweroff|reboot)"
 
 # ad-hoc aliases
+alias cal='cal --week'
 alias cfg='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias gb='git branch'
 alias gs='git status'
