@@ -18,7 +18,7 @@ setxkbmap -option compose:ralt
 nitrogen --restore &
 
 # start notification daemon
-dunst &
+ # dunst &
 
 # start clipboard history manager
 greenclip daemon &

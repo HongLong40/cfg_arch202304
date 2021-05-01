@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-# this is a simple config for herbstluftwm
+# config for herbstluftwm
+# 2021-05-01 Add dunst notification daemon
 
 hc() {
     herbstclient "$@"
@@ -17,7 +18,11 @@ hc emit_hook reload
 
 xsetroot -solid '#19202A'
 
+# start conky
 run conky --daemonize --pause=1
+
+# start notification daemon (moved from .xprofile to fix font size being too big)
+dunst &
 
 if hc silent new_attr bool my_not_first_autostart ; then
     synology-cloud-station-drive autostart &
