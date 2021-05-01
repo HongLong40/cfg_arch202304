@@ -1,4 +1,6 @@
 #!/bin/bash
+# 2021-05-01 Moved dunst to ~/.config/herbstluftwm/autostart: font too big otherwise
+
 #env > ~/env.txt
 
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
