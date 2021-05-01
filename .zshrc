@@ -111,6 +111,7 @@ HISTORY_IGNORE="(ls*|ll*|cd*|cls|exit|poweroff|reboot)"
 # ad-hoc aliases
 alias cal='cal --week'
 alias cfg='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias ga='git add'
 alias gb='git branch'
 alias gs='git status'
 alias gsp='git status --porcelain'

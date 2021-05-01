@@ -193,6 +193,8 @@ hc rule class=Galculator    floating=on floatplacement=smart
 hc rule class=Gucharmap     floating=on floatplacement=smart
 hc rule class=gl            floating=on floatplacement=smart
 hc rule class=Lxappearance  floating=on floatplacement=smart
+hc rule class=matplotlib    floating=on floatplacement=smart
+hc rule class=Matplotlib    floating=on floatplacement=smart
 hc rule class=mpv           floating=on floatplacement=smart
 hc rule class=Seahorse      floating=on floatplacement=center
 
