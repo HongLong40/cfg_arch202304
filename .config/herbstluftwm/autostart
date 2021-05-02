@@ -2,6 +2,7 @@
 
 # config for herbstluftwm
 # 2021-05-01 Add dunst notification daemon
+# 2021-05-02 Add rule for "VirtualBox Machine" ➔ tag: remote
 
 hc() {
     herbstclient "$@"
@@ -192,6 +193,7 @@ hc rule class=Code tag=code switchtag=on
 hc rule class=Clementine tag=media
 hc rule class=Opera tag=www
 hc rule class=org.remmina.Remmina tag=remote
+hc rule class="VirtualBox Machine" tag=remote
 
 # floating clients
 hc rule class=Galculator    floating=on floatplacement=smart
