@@ -4,9 +4,7 @@
 import sys
 
 # Constants
-DIGITS_TO_HEX = ("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F")
-DIGITS_FROM_HEX = {"0": 0, "1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9,
-                   "A": 10, "B": 11, "C": 12, "D": 13, "E": 14, "F": 15}
+HEX_DIGITS = ("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F")
 
 
 def validate_inputs():
@@ -31,7 +29,8 @@ def to_base_10(n_str, base):
 
     for i in range(len(digits)):
         d = digits[i]
-        n = n * base + DIGITS_FROM_HEX[d]
+        val = HEX_DIGITS.index(d)
+        n = n * base + val
 
     return str(n)
 
@@ -42,7 +41,7 @@ def from_base_10(quotient, to_base):
     while quotient > 0:
         remainder = quotient % to_base
         quotient = quotient // to_base
-        digits_out = DIGITS_TO_HEX[remainder] + digits_out
+        digits_out = HEX_DIGITS[remainder] + digits_out
 
     return digits_out
 
