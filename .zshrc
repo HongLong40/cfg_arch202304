@@ -117,3 +117,6 @@ alias gs='git status'
 alias gsp='git status --porcelain'
 
 alias hc=herbstclient
+
+# convert number to different base
+function convert() { /home/edward/Scripts/python_training/conv.py $1 $2 $3  }
