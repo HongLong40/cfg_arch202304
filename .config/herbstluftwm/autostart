@@ -210,7 +210,7 @@ hc rule windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on
 hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off
 
 hc set tree_style '╾│ ├└╼─┐'
-hc set swap_monitors_to_get_tag 0
+hc set swap_monitors_to_get_tag 1
 
 # unlock, just to be sure
 hc unlock
