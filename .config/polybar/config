@@ -196,7 +196,7 @@ format-offset     =
 
     ; Interval for volume increase/decrease (in percent points)
     ; Default: 5
-    interval = 2
+    interval = 1
 
     format-volume = <label-volume>
     label-volume =  %percentage%%
