@@ -3,6 +3,7 @@
 # config for herbstluftwm
 # 2021-05-01 Add dunst notification daemon
 # 2021-05-02 Add rule for "VirtualBox Machine" ➔ tag: remote
+# 2021-05-28 Detect right-top edge and position mouse there
 
 hc() {
     herbstclient "$@"
@@ -225,4 +226,5 @@ hc detect_monitors
 
 # set focus to first monitor and position mouse top right
 hc focus_monitor 0
-xte 'mousemove 1900 30'
+xpos=$(hc list_monitors | rg "0:" | awk -F "x" '{ print $1 }' | awk '{ print $2-30 }')
+xte "mousemove $xpos 30"
