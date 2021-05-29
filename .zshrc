@@ -1,5 +1,4 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+# 2021-05-29 Edward Smith Updated vcs_info styles
 
 ZSH="/usr/share/zsh/custom"
 fpath=("$ZSH" "$fpath[@]")
@@ -8,7 +7,10 @@ autoload -Uz vcs_info
 
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' disable-patterns "${(b)HOME}/.cfg(|/*)"
-zstyle ':vcs_info:git:*' formats ' %F{#d78700}%s:%b%f'
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' stagedstr '%F{green}+%f'
+zstyle ':vcs_info:*' unstagedstr '%F{red}!%f'
+zstyle ':vcs_info:git:*' formats ' %F{#d78700}%s:%b %u%c'
 #zstyle ':vcs_info:git:*' formats ' %F{#d78700}⎇  %b%f'
 #zstyle ':vcs_info:git:*' formats ' %F{#d78700}-  %b%f'
 
