@@ -5,12 +5,14 @@ fpath=("$ZSH" "$fpath[@]")
 autoload -Uz compinit promptinit; compinit; promptinit
 autoload -Uz vcs_info
 
+export GIT_PROMPT_COLOR='%F{#d78700}'
+
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' disable-patterns "${(b)HOME}/.cfg(|/*)"
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' stagedstr '%F{green}+%f'
 zstyle ':vcs_info:*' unstagedstr '%F{red}!%f'
-zstyle ':vcs_info:git:*' formats ' %F{#d78700}%s:%b %u%c'
+zstyle ':vcs_info:git:*' formats ' ${GIT_PROMPT_COLOR}%s:%b %u%c'
 #zstyle ':vcs_info:git:*' formats ' %F{#d78700}⎇  %b%f'
 #zstyle ':vcs_info:git:*' formats ' %F{#d78700}-  %b%f'
 
