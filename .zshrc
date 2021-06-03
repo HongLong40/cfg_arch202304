@@ -106,7 +106,6 @@ zle -N zle-line-finish
 #setopt prompt_subst
 prompt edward yellow
 RPROMPT='${vim_mode}'
-#RPROMPT=\$vcs_info_msg_0_
 
 echo -ne '\e[4 q' # Use underline shape cursor on startup.
 
@@ -122,5 +121,5 @@ alias gsp='git status --porcelain'
 
 alias hc=herbstclient
 
-# convert number to different base
-# function convert() { /home/edward/.config/utils/conv.py $1 $2 $3 }
+# add push-line-or-edit function
+bindkey '^B' push-line-or-edit
