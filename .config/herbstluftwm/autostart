@@ -4,6 +4,8 @@
 # 2021-05-01 Add dunst notification daemon
 # 2021-05-02 Add rule for "VirtualBox Machine" ➔ tag: remote
 # 2021-05-28 Detect right-top edge and position mouse there
+# 2021-06-05 Update to 0.9.3: The setting default_frame_layout now holds
+#            an algorithm name
 
 hc() {
     herbstclient "$@"
@@ -92,7 +94,7 @@ hc keybind $Mod-Shift-BackSpace shift_to_monitor +1
 #hc keybind $Mod-Mod1-Left  shift_to_monitor -1
 
 # default frame layout: 0 vertical | 1 horizontal | 2 max | 3 grid
-hc set default_frame_layout 1
+hc set default_frame_layout horizontal 
 
 # tags
 tag_names=( "main" "two" "code" "four" "www" "six" "seven" "media" "remote" )
