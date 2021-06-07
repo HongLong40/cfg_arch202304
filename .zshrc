@@ -116,8 +116,10 @@ alias cal='cal --week'
 alias cfg='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias ga='git add'
 alias gb='git branch'
+alias gf='git fetch'
 alias gs='git status'
 alias gsp='git status --porcelain'
+alias gspb='git status --porcelain=v2 --branch'
 
 alias hc=herbstclient
 
