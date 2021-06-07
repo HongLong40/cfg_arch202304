@@ -118,7 +118,7 @@ alias ga='git add'
 alias gb='git branch'
 alias gf='git fetch'
 alias gs='git status'
-alias gsp='git status --porcelain'
+alias gsp='git status --porcelain --branch'
 alias gspb='git status --porcelain=v2 --branch'
 
 alias hc=herbstclient
