@@ -35,17 +35,4 @@ then
 fi
 
 # start herbstluftwm. The --locked option eliminates flickering while wm starts
-#exec herbstluftwm --locked 
-#exec qtile start 
-#exec i3
-
-# Keep Herbstluftwm as default
-session=${1:-herbstluftwm}
-
-case $session in
-    herbstluftwm    ) exec herbstluftwm --locked;;
-    i3              ) exec i3;;
-    qtile           ) exec qtile start;;
-    # No known session, try to run it as command
-    *               ) exec $1;;
-esac
+exec herbstluftwm --locked 
