@@ -1,20 +1,9 @@
 # 2021-05-29 Edward Smith Updated vcs_info styles
+# 2021-06-13 Edward Smith moved vcs_info and git aliases to zsh setup files
 
 ZSH="/usr/share/zsh/custom"
 fpath=("$ZSH" "$fpath[@]")
 autoload -Uz compinit promptinit; compinit; promptinit
-autoload -Uz vcs_info
-
-export GIT_PROMPT_COLOR='%F{#d78700}'
-
-zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:*' disable-patterns "${(b)HOME}/.cfg(|/*)"
-zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' stagedstr '%F{green}+%f'
-zstyle ':vcs_info:*' unstagedstr '%F{red}!%f'
-zstyle ':vcs_info:git:*' formats ' ${GIT_PROMPT_COLOR}%s:%b %u%c'
-#zstyle ':vcs_info:git:*' formats ' %F{#d78700}⎇  %b%f'
-#zstyle ':vcs_info:git:*' formats ' %F{#d78700}-  %b%f'
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
@@ -113,14 +102,6 @@ HISTORY_IGNORE="(ls*|ll*|cd*|cls|exit|poweroff|reboot)"
 
 # ad-hoc aliases
 alias cal='cal --week'
-alias cfg='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-alias ga='git add'
-alias gb='git branch'
-alias gf='git fetch'
-alias gs='git status'
-alias gsp='git status --porcelain --branch'
-alias gspb='git status --porcelain=v2 --branch'
-
 alias hc=herbstclient
 
 # add push-line-or-edit function
