@@ -1,4 +1,5 @@
-## ==================================================================== ##
+## =================================================================================================== ##
+# 2021-06-26 Removed underlines from right-hand modules; added click-left action for pacman-ipc module
 
 [global/wm]
 ;https://github.com/jaagr/polybar/wiki/Configuration#global-wm-settings
@@ -110,7 +111,7 @@ format-offset     =
     format-mounted-font = 2
     format-mounted-padding = 1
     format-mounted-margin = 1
-    format-mounted-underline = #00aaaa
+    #format-mounted-underline = #00aaaa
 # --}
 
 [module/xwindow]
@@ -153,19 +154,19 @@ format-offset     =
     format-charging-padding = 1
     format-charging-margin = 1
     format-charging-font = 2
-    format-charging-underline = #00ff00
+    #format-charging-underline = #00ff00
 
     label-discharging = %{F#FF0000} %{F-}  %percentage%% (%time%)
     format-discharging-padding = 1
     format-discharging-margin = 1
     format-discharging-font = 2
-    format-discharging-underline = #ff0000
+    #format-discharging-underline = #ff0000
 
     label-full =  Full
     format-full-font = 2
     format-full-padding = 1
     format-full-margin = 1
-    format-full-underline = #aaaaaa
+    #format-full-underline = #aaaaaa
 # --}
 
 [module/cpu]
@@ -182,7 +183,7 @@ format-offset     =
     format-font = 2
     format-padding = 1
     format-margin = 1
-    format-underline = #aa00aa
+    #format-underline = #aa00aa
 # --}
 
 [module/pulseaudio]
@@ -203,14 +204,14 @@ format-offset     =
     format-volume-padding = 1
     format-volume-margin = 1
     format-volume-font = 2
-    format-volume-underline = #aa00aa
+    #format-volume-underline = #aa00aa
 
     label-muted =  muted
     label-muted-foreground = #aaa
     format-muted-padding = 1
     format-muted-margin = 1
     format-muted-font = 2
-    format-muted-underline = #00aaaa
+    #format-muted-underline = #00aaaa
 # --}
 
 [module/memory]
@@ -226,7 +227,7 @@ format-offset     =
     format-padding = 1
     format-margin = 1
     format-font = 2
-    format-underline = #00aa00
+    #format-underline = #00aa00
 # --}
 
 [module/clementine]
@@ -240,38 +241,18 @@ format-offset     =
     format-font = 3
 # --}
 
-# [module/tagmon]
-# # --{
-#     type = custom/script
-#     interval = 1
-#     exec = ~/.config/herbstluftwm/hcstack.sh
-#     format-font = 2
-#     format-padding = 2
-# # --}
-
-#[module/pacman]
-## --{
-#    type = custom/script
-#    interval = 60
-#    exec = cat /tmp/pacman_updates.count
-#    format = <label>
-#    label =  Updates: %output%
-#    format-font = 2
-#    format-padding = 2
-#    format-underline = #fa00aa00
-## --}
-
 [module/pacman_ipc]
 # --{
     type = custom/ipc
     hook-0 = echo " Updates: N/A"
     hook-1 = echo " Updates: $(</tmp/pacman_updates.count)"
+    click-left = polybar-msg hook pacman_ipc 2
     format = <output>
     output =  Updates: %output%
     format-font = 2
     format-padding = 1
     format-margin = 1
-    format-underline = #fa00aa00
+    #format-underline = #fa00aa00
     initial = 1
 # --}
 
@@ -285,7 +266,7 @@ format-offset     =
     format-font = 2
     format-padding = 1
     format-margin = 1
-    format-underline = #aaaa00
+    #format-underline = #aaaa00
 # --}
 
 [module/hlwm-monitor0]
