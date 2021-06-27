@@ -64,7 +64,7 @@ set statusline+=\ %n\ -\ %<%t%h%M
 set statusline+=%=
 set statusline+=%{&fileencoding?&fileencoding:&encoding}
 set statusline+=:%{&fileformat}
-set statusline+=\ │\ %5.5b\ │\ %04.4B\ │\ line\ %05.5l/%05.5L\ col\ %03.3v
+set statusline+=\ │\ %5.5b\ │\ %04.4B\ │\ %05.5l:%03.3v\ %05.5L
 set statusline+=\ 
 
 " --- Settings (general) -----------------------------------------------------
