@@ -1,3 +1,4 @@
 #!/bin/sh
 # feh --no-fehbg --bg-fill '/home/edward/Pictures/Wallpapers.dt/0015.jpg' '/home/edward/Pictures/Wallpapers/arco-wallpaper.jpg' 
 feh --no-fehbg --bg-fill '/home/edward/Pictures/Wallpapers.dt/0062.jpg' '/home/edward/Pictures/Wallpapers/arco-wallpaper.jpg' 
+# feh --no-fehbg --bg-fill '/home/edward/Pictures/Wallpapers.dt/0062.jpg' '/home/edward/Pictures/Wallpapers/abstract_art_ii-wallpaper-2560x1440.jpg' 

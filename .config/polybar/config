@@ -1,5 +1,6 @@
 ## =================================================================================================== ##
 # 2021-06-26 Removed underlines from right-hand modules; added click-left action for pacman-ipc module
+# 2021-07-04 Removed transparency from slate-p color
 
 [global/wm]
 ;https://github.com/jaagr/polybar/wiki/Configuration#global-wm-settings
@@ -17,7 +18,8 @@ yellow = #FFFF00
 soft-white = #CFCFCF
 
 ; slate triadic
-slate-p = #AA1A355B
+slate-p = #1A355B
+#slate-p = #AA1A355B
 slate-s = #5B1A35
 slate-t = #355B1A
 # --}
