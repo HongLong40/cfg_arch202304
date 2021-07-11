@@ -1,5 +1,6 @@
 # 2021-05-29 Edward Smith Updated vcs_info styles
-# 2021-06-13 Edward Smith moved vcs_info and git aliases to zsh setup files
+# 2021-06-13 Edward Smith Moved vcs_info and git aliases to zsh setup files
+# 2021-07-11 Edward Smith Added fortune
 
 ZSH="/usr/share/zsh/custom"
 fpath=("$ZSH" "$fpath[@]")
@@ -106,3 +107,5 @@ alias hc=herbstclient
 
 # add push-line-or-edit function
 bindkey '^B' push-line-or-edit
+fortune
+
