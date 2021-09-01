@@ -5,8 +5,6 @@
  ******************************************************************************/
 * {
     selected-normal-foreground:  #101010;
-    selected-normal-background:  #ba4705;
-    prompt-background:           #51afef;
     foreground:                  rgba ( 129, 147, 150, 100 % );
     normal-foreground:           @foreground;
     alternate-normal-background: rgba ( 0, 43, 55, 100 % );
@@ -24,6 +22,7 @@
     alternate-normal-foreground: @foreground;
     normal-background:           rgba ( 0, 43, 55, 100 % );
     lightfg:                     rgba ( 88, 104, 117, 100 % );
+    selected-normal-background:  #ba4705;
     border-color:                @foreground;
     spacing:                     2;
     separatorcolor:              rgba ( 0, 54, 66, 100 % );
@@ -39,6 +38,7 @@ window {
     background-color: @background;
     border:           1;
     padding:          2 2 2 2;
+    width:            44%;
 }
 mainbox {
     border:  1;
@@ -63,6 +63,15 @@ listview {
 element {
     border:  0;
     padding: 1px ;
+}
+element-text {
+    background-color: inherit;
+    text-color:       inherit;
+}
+element-icon {
+    size:           1.0em;
+    margin:         0 10 0 0;
+    vertical-align: 0.0;
 }
 element.normal.normal {
     background-color: @normal-background;

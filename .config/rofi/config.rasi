@@ -3,15 +3,13 @@ configuration {
     combi-modi: "window,drun";
     display-combi: "🗔 ";
     theme: "current";
-    font: "Cascadia Code PL 12";
+    font: "JetBrains Mono NL 12";
+    // font: "Cascadia Code PL 12";
     show-icons: true;
-    scrollbar-width: 0;
-    width: 44;
+    // scrollbar-width: 0;
+    // width: 40;
     monitor: "-4";
     location: 0;
     // yoffset: 100;
     terminal: "alacritty";
-}
-element-icon {
-    size: 1.0em ;
 }
