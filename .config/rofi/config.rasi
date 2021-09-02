@@ -6,8 +6,6 @@ configuration {
     font: "JetBrains Mono NL 12";
     // font: "Cascadia Code PL 12";
     show-icons: true;
-    // scrollbar-width: 0;
-    // width: 40;
     monitor: "-4";
     location: 0;
     // yoffset: 100;
