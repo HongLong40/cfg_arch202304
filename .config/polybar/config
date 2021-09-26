@@ -1,6 +1,7 @@
 ## =================================================================================================== ##
 # 2021-06-26 Removed underlines from right-hand modules; added click-left action for pacman-ipc module
 # 2021-07-04 Removed transparency from slate-p color
+# 2021-09-26 Changed label-maxlen from 100 to 200
 
 [global/wm]
 ;https://github.com/jaagr/polybar/wiki/Configuration#global-wm-settings
@@ -120,7 +121,7 @@ format-offset     =
 # --{ https://github.com/jaagr/polybar/wiki/Module:-xwindow
     type = internal/xwindow
     label = %title%
-    label-maxlen = 100
+    label-maxlen = 200
 
     format-background = ${colors.slate-t}
     format-font       = 3
