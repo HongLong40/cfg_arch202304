@@ -6,6 +6,7 @@
 # 2021-05-28 Detect right-top edge and position mouse there
 # 2021-06-05 Update to 0.9.3: The setting default_frame_layout now holds
 #            an algorithm name
+# 2021-10-03 changed floatplacement for dialogs; mpv
 
 hc() {
     herbstclient "$@"
@@ -194,7 +195,7 @@ hc rule floatplacement=smart
 # Clients with fixed tags
 hc rule class=Code tag=code switchtag=on
 hc rule class=Clementine tag=media
-hc rule class="Gimp-2.10" tag=gfx
+hc rule class="Gimp-2.10" tag=gfx switchtag=on
 hc rule class="Inkscape" tag=gfx
 hc rule class=Opera tag=www
 hc rule class="Brave-browser" tag=www
@@ -208,10 +209,10 @@ hc rule class=gl            floating=on floatplacement=smart
 hc rule class=Lxappearance  floating=on floatplacement=smart
 hc rule class=matplotlib    floating=on floatplacement=smart
 hc rule class=Matplotlib    floating=on floatplacement=smart
-hc rule class=mpv           floating=on floatplacement=smart
+hc rule class=mpv           floating=on floatplacement=center
 hc rule class=Seahorse      floating=on floatplacement=center
 
-hc rule windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)' floating=on
+hc rule windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)' floating=on floatplacement=center
 hc rule windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on
 hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off
 
