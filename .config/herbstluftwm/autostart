@@ -195,6 +195,7 @@ hc rule floatplacement=smart
 hc rule class=Code tag=code switchtag=on
 hc rule class=Clementine tag=media
 hc rule class="Gimp-2.10" tag=gfx
+hc rule class="Inkscape" tag=gfx
 hc rule class=Opera tag=www
 hc rule class="Brave-browser" tag=www
 hc rule class=org.remmina.Remmina tag=remote
