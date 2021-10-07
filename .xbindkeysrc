@@ -75,6 +75,13 @@
 "galculator"
     Mod2 + XF86Calculator
 
+# File Manager
+"thunar"
+    Mod2+Mod4 + e
+
+"pcmanfm"
+    Shift+Mod2+Mod4 + e
+
 # Settings Manager
 #"xfce4-settings-manager"
 #    Mod2+Mod4 + i
