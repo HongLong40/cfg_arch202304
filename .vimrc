@@ -86,7 +86,7 @@ set foldmarker=--{,--}
 
 " --- Abbreviations and Ligatures --------------------------------------------
 iabbrev ... …
-iabbrev -> ➔
+iabbrev ->  →
 iabbrev bbb [ ]
 iabbrev bvb [✓]
 

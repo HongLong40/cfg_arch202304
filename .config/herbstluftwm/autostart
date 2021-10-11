@@ -2,11 +2,14 @@
 
 # config for herbstluftwm
 # 2021-05-01 Add dunst notification daemon
-# 2021-05-02 Add rule for "VirtualBox Machine" ➔ tag: remote
+# 2021-05-02 Add rule for "VirtualBox Machine" → tag: remote
 # 2021-05-28 Detect right-top edge and position mouse there
 # 2021-06-05 Update to 0.9.3: The setting default_frame_layout now holds
 #            an algorithm name
 # 2021-10-03 changed floatplacement for dialogs; mpv
+# 2021-10-09 changed floating border width and inactive color
+# 2021-10-10 reset workspace name to standard [1..9]
+#            removed arrow keys for frame & window navigation (use hjkl keys only)
 
 hc() {
     herbstclient "$@"
@@ -51,20 +54,20 @@ hc keybind $Mod-Return spawn $terminal # use your $TERMINAL with xterm as fallba
 
 # basic movement in tiling and floating mode
 # focusing clients
-hc keybind $Mod-Left  focus left
-hc keybind $Mod-Down  focus down
-hc keybind $Mod-Up    focus up
-hc keybind $Mod-Right focus right
+#hc keybind $Mod-Left  focus left
+#hc keybind $Mod-Down  focus down
+#hc keybind $Mod-Up    focus up
+#hc keybind $Mod-Right focus right
 hc keybind $Mod-h     focus left
 hc keybind $Mod-j     focus down
 hc keybind $Mod-k     focus up
 hc keybind $Mod-l     focus right
 
 # moving clients in tiling and floating mode
-hc keybind $Mod-Shift-Left  shift left
-hc keybind $Mod-Shift-Down  shift down
-hc keybind $Mod-Shift-Up    shift up
-hc keybind $Mod-Shift-Right shift right
+#hc keybind $Mod-Shift-Left  shift left
+#hc keybind $Mod-Shift-Down  shift down
+#hc keybind $Mod-Shift-Up    shift up
+#hc keybind $Mod-Shift-Right shift right
 hc keybind $Mod-Shift-h     shift left
 hc keybind $Mod-Shift-j     shift down
 hc keybind $Mod-Shift-k     shift up
@@ -84,10 +87,10 @@ hc keybind $Mod-Control-h       resize left +$resizestep
 hc keybind $Mod-Control-j       resize down +$resizestep
 hc keybind $Mod-Control-k       resize up +$resizestep
 hc keybind $Mod-Control-l       resize right +$resizestep
-hc keybind $Mod-Control-Left    resize left +$resizestep
-hc keybind $Mod-Control-Down    resize down +$resizestep
-hc keybind $Mod-Control-Up      resize up +$resizestep
-hc keybind $Mod-Control-Right   resize right +$resizestep
+#hc keybind $Mod-Control-Left    resize left +$resizestep
+#hc keybind $Mod-Control-Down    resize down +$resizestep
+#hc keybind $Mod-Control-Up      resize up +$resizestep
+#hc keybind $Mod-Control-Right   resize right +$resizestep
 
 # move to monitor
 hc keybind $Mod-Shift-BackSpace shift_to_monitor +1
@@ -98,8 +101,9 @@ hc keybind $Mod-Shift-BackSpace shift_to_monitor +1
 hc set default_frame_layout horizontal 
 
 # tags
-tag_names=( "main" "two" "code" "gfx" "www" "six" "seven" "media" "remote" )
-#tag_names=( {1..9} )
+#tag_names=( "main" "two" "code" "gfx" "www" "six" "seven" "media" "remote" )
+#tag_names=( "1" "2" "3" "4" "5" "6" "7" "8" "9" )
+tag_names=( {1..9} 0 )
 tag_keys=( {1..9} 0 )
 
 hc rename default "${tag_names[0]}" || true
@@ -169,9 +173,9 @@ hc attr theme.urgent.color orange
 hc attr theme.inner_width 1
 hc attr theme.inner_color black
 hc attr theme.border_width 2
-hc attr theme.floating.border_width 2
-hc attr theme.floating.outer_width 1
-hc attr theme.floating.outer_color black
+hc attr theme.floating.border_width 4
+hc attr theme.floating.outer_width 10
+hc attr theme.floating.outer_color '#900000'
 hc attr theme.active.inner_color '#3E4A00'
 hc attr theme.active.outer_color '#3E4A00'
 hc attr theme.background_color '#141414'
@@ -193,17 +197,16 @@ hc rule floatplacement=smart
 #hc rule class~'(.*[Rr]xvt.*|.*[Tt]erm|Konsole)' focus=on
 
 # Clients with fixed tags
-hc rule class=Code tag=code switchtag=on
-hc rule class=Clementine tag=media
-hc rule class="Gimp-2.10" tag=gfx switchtag=on
-hc rule class="Inkscape" tag=gfx
-hc rule class=Opera tag=www
-hc rule class="Brave-browser" tag=www
-hc rule class=org.remmina.Remmina tag=remote
-hc rule class="VirtualBox Machine" tag=remote
+hc rule class=Code                  tag=3 switchtag=on
+hc rule class=Clementine            tag=8
+hc rule class="Gimp-2.10"           tag=4 switchtag=on
+hc rule class="Inkscape"            tag=4 switchtag=on
+hc rule class="Brave-browser"       tag=5 switchtag=on
+hc rule class=org.remmina.Remmina   tag=9
+hc rule class="VirtualBox Machine"  tag=9 switchtag=on 
 
 # floating clients
-hc rule class=Galculator    floating=on floatplacement=smart
+hc rule class=Galculator    floating=on floatplacement=center
 hc rule class=Gucharmap     floating=on floatplacement=smart
 hc rule class=gl            floating=on floatplacement=smart
 hc rule class=Lxappearance  floating=on floatplacement=smart
