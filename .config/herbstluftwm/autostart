@@ -11,6 +11,7 @@
 # 2021-10-10 reset workspace name to standard [1..9]
 #            removed arrow keys for frame & window navigation (use hjkl keys only)
 # 2021-10-13 modified various theme elements
+# 2021-10-14 cleaned up theme elements
 
 hc() {
     herbstclient "$@"
@@ -131,6 +132,7 @@ hc keybind $Mod-space                                                           
             or , and . compare tags.focus.curframe_wcount = 2                   \
                      . cycle_layout +1 vertical horizontal max vertical grid    \
                , cycle_layout +1
+hc keybind $Mod-m   set_layout max
 
 # mouse
 hc mouseunbind --all
@@ -147,6 +149,8 @@ hc keybind $Mod-i jumpto urgent
 # theme
 hc attr theme.tiling.reset 1
 hc attr theme.floating.reset 1
+hc attr theme.background_color '#141414'
+
 hc set frame_padding 0
 hc set frame_gap 6
 hc set frame_border_active_color '#AA00AA'
@@ -158,18 +162,25 @@ hc set always_show_frame on
 hc set frame_bg_transparent on
 hc set frame_transparent_width 4
 
-hc attr theme.active.color '#AA00AA'
-hc attr theme.normal.color '#454545'
-hc attr theme.urgent.color orange
-hc attr theme.inner_width 1
-hc attr theme.inner_color black
+# window border: border_width = inner_width + outer_width + {remaining width (color)}
 hc attr theme.border_width 3
-hc attr theme.floating.border_width 4
-hc attr theme.floating.outer_width 10
-hc attr theme.floating.outer_color '#900000'
-hc attr theme.active.inner_color '#3E4A00'
-hc attr theme.active.outer_color '#3E4A00'
-hc attr theme.background_color '#141414'
+hc attr theme.inner_width 1
+hc attr theme.outer_width 1
+hc attr theme.floating.border_width 6
+
+# colors
+hc attr theme.inner_color           '#202020'
+hc attr theme.active.inner_color    '#3E4A00'
+
+hc attr theme.outer_color           '#454545'
+hc attr theme.active.outer_color    '#AA00AA'
+
+hc attr theme.color         '#454545'
+hc attr theme.active.color  '#AA00AA'
+hc attr theme.urgent.color  orange
+
+hc attr theme.floating.active.color       '#007000'
+hc attr theme.floating.active.outer_color '#007000'
 
 hc set window_gap 1
 hc set smart_window_surroundings off
