@@ -58,6 +58,17 @@ format-offset     =
     format-font = 2
 # --}
 
+; HLWM workspace info
+
+[module/info-hlwm-workspaces]
+type = custom/script
+exec = /home/edward/.config/polybar/info_hlwm_workspaces.sh
+tail = true
+;scroll-up = herbstclient use_index -1 --skip-visible &
+;scroll-down = herbstclient use_index +1 --skip-visible &
+
+label-font=1
+
 [module/ewmh]
 # --{ workspaces
     type = internal/xworkspaces
@@ -299,7 +310,7 @@ font-5 = "Font Awesome 5 Brands:pixelsize=10;1"
 wm-name = 
 separator = 
 underline-size = 2
-;padding-right = 3
+padding = 0
 
 ;tray-position = right
 ;dim-value = 0.1
@@ -307,7 +318,7 @@ underline-size = 2
 enable-ipc = true
 ;cursor-scroll = ns-resize
 
-modules-left  = ewmh xwindow
+modules-left  = info-hlwm-workspaces xwindow
 modules-center =
 modules-right = pulseaudio memory cpu battery filesystem pacman_ipc cfg cdate
 
