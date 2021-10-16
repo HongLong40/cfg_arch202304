@@ -48,11 +48,11 @@
 
 # Show rofi applications menu
 "rofi -show combi"
-    Mod2+Mod4 + p
+    Mod2+Mod4 + a
 
 # Show rofi-based clipboard
 "rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'"
-    Mod2+Mod4 + v
+    Mod2+Mod4 + p
 
 # Lock Screen
 "betterlockscreen -l"

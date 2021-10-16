@@ -1,10 +1,11 @@
 #!/bin/bash
 # 2021-05-01 Moved dunst to ~/.config/herbstluftwm/autostart: font too big otherwise
+# 2021-10-15 Move application bindings to ~/.config/herbstluftwm/autostart
 
 #env > ~/env.txt
 
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-xbindkeys &
+# xbindkeys &
 
 # set screen layout
 ~/.screenlayout/display.sh
