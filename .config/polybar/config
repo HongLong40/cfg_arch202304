@@ -2,14 +2,15 @@
 # 2021-06-26 Removed underlines from right-hand modules; added click-left action for pacman-ipc module
 # 2021-07-04 Removed transparency from slate-p color
 # 2021-09-26 Changed label-maxlen from 100 to 200
+# 2021-10-17 Added module info_hwlm_workspaces. Cleaned up file
 
 [global/wm]
-;https://github.com/jaagr/polybar/wiki/Configuration#global-wm-settings
+# https://github.com/jaagr/polybar/wiki/Configuration#global-wm-settings
 margin-top = 0
 margin-bottom = 1
 
 [settings]
-;https://github.com/jaagr/polybar/wiki/Configuration#application-settings
+# https://github.com/jaagr/polybar/wiki/Configuration#application-settings
 throttle-output = 5
 screenchange-reload = true
 
@@ -18,7 +19,7 @@ screenchange-reload = true
 yellow = #FFFF00
 soft-white = #CFCFCF
 
-; slate triadic
+# slate triadic
 slate-p = #1A355B
 slate-s = #5B1A35
 slate-t = #355B1A
@@ -47,98 +48,6 @@ format-margin     =
 format-offset     =
 
 ## == Modules ========================================================= ##
-[module/cdate]
-# --{
-    type = internal/date
-    interval = 60
-    date = %{F#FFFF00}%H:%M%{F-} • %Y-%m-%d • w%V%
-    label-padding = 2
-    format-background = ${colors.slate-s}
-    format-font = 2
-# --}
-
-; HLWM workspace info
-
-[module/info-hlwm-workspaces]
-type = custom/script
-exec = /home/edward/.config/polybar/info_hlwm_workspaces.sh
-tail = true
-;scroll-up = herbstclient use_index -1 --skip-visible &
-;scroll-down = herbstclient use_index +1 --skip-visible &
-
-label-font=1
-
-[module/ewmh]
-# --{ workspaces
-    type = internal/xworkspaces
-
-    pin-workspaces = false
-    enable-click = true
-    enable-scroll = true
-    reverse-scroll = true
-
-    format = <label-state>
-    format-font = 2
-
-    ;label-monitor = %name%
-
-    label-active = %name%
-    label-active-background = ${colors.slate-t}
-    label-active-padding = 4
-
-    label-urgent = %name%
-    label-urgent-background = #ff0000
-    label-urgent-padding = 4
-
-    label-empty = %{F#bbbbbb}%name%%{F-}
-    label-empty-padding = 4
-
-    label-occupied = %name%
-    label-occupied-background = ${colors.slate-s}
-    label-occupied-padding = 4
-# --}
-
-[module/filesystem]
-# --{
-    type = internal/fs
-
-    ; Mountpoints to display
-    mount-0 = /
-    ;mount-1 = /home
-    ;mount-2 = /var
-
-    ; Seconds to sleep between updates
-    ; Default: 30
-    interval = 600
-
-    ; Display fixed precision values
-    ; Default: false
-    fixed-values = true
-
-    ; Spacing between entries
-    ; Default: 2
-    spacing = 4
-
-    format-mounted = <label-mounted>
-    label-mounted =  %free%
-    format-mounted-font = 2
-    format-mounted-padding = 1
-    format-mounted-margin = 1
-    #format-mounted-underline = #00aaaa
-# --}
-
-[module/xwindow]
-# --{ https://github.com/jaagr/polybar/wiki/Module:-xwindow
-    type = internal/xwindow
-    label = %title%
-    label-maxlen = 200
-
-    format-background = ${colors.slate-t}
-    format-font       = 3
-    format-padding    = 4
-    format-margin     = 2
-# --}
-
 [module/battery]
 # --{
     type = internal/battery
@@ -182,6 +91,29 @@ label-font=1
     #format-full-underline = #aaaaaa
 # --}
 
+[module/cdate]
+# --{
+    type = internal/date
+    interval = 60
+    date = %{F#FFFF00}%H:%M%{F-} • %Y-%m-%d • w%V%
+    label-padding = 2
+    format-background = ${colors.slate-s}
+    format-font = 2
+# --}
+
+[module/cfg]
+# --{
+    type = custom/script
+    interval = 60
+    exec = git --git-dir=$HOME/.cfg/ --work-tree=$HOME status --porcelain | wc -l
+    format = <label>
+    label =  Changes: %output%
+    format-font = 2
+    format-padding = 1
+    format-margin = 1
+    #format-underline = #aaaa00
+# --}
+
 [module/cpu]
 # --{
     type = internal/cpu
@@ -197,6 +129,74 @@ label-font=1
     format-padding = 1
     format-margin = 1
     #format-underline = #aa00aa
+# --}
+
+[module/filesystem]
+# --{
+    type = internal/fs
+
+    ; Mountpoints to display
+    mount-0 = /
+    ;mount-1 = /home
+    ;mount-2 = /var
+
+    ; Seconds to sleep between updates
+    ; Default: 30
+    interval = 600
+
+    ; Display fixed precision values
+    ; Default: false
+    fixed-values = true
+
+    ; Spacing between entries
+    ; Default: 2
+    spacing = 4
+
+    format-mounted = <label-mounted>
+    label-mounted =  %free%
+    format-mounted-font = 2
+    format-mounted-padding = 1
+    format-mounted-margin = 1
+    #format-mounted-underline = #00aaaa
+# --}
+
+[module/info-hlwm-workspaces]
+# --{ HLWM workspace info
+type = custom/script
+exec = /home/edward/.config/polybar/info_hlwm_workspaces.sh
+tail = true
+label-font=1
+# --}
+
+[module/memory]
+# --{
+    type = internal/memory
+
+    ; Seconds to sleep between updates
+    ; Default: 1
+    interval = 3
+
+    ;label = MEM %percentage_used%% = %mb_used% | %gb_free% | %gb_total%
+    label =  %percentage_used%% = %mb_used%
+    format-padding = 1
+    format-margin = 1
+    format-font = 2
+    #format-underline = #00aa00
+# --}
+
+[module/pacman_ipc]
+# --{
+    type = custom/ipc
+    hook-0 = echo " Updates: N/A"
+    hook-1 = echo " Updates: $(</tmp/pacman_updates.count)"
+    click-left = polybar-msg hook pacman_ipc 2
+    format = <output>
+    output =  Updates: %output%
+    format-font = 2
+    format-padding = 1
+    format-margin = 1
+    #format-underline = #fa00aa00
+    initial = 1
 # --}
 
 [module/pulseaudio]
@@ -227,68 +227,16 @@ label-font=1
     #format-muted-underline = #00aaaa
 # --}
 
-[module/memory]
-# --{
-    type = internal/memory
+[module/xwindow]
+# --{ https://github.com/jaagr/polybar/wiki/Module:-xwindow
+    type = internal/xwindow
+    label = %title%
+    label-maxlen = 200
 
-    ; Seconds to sleep between updates
-    ; Default: 1
-    interval = 3
-
-    ;label = MEM %percentage_used%% = %mb_used% | %gb_free% | %gb_total%
-    label =  %percentage_used%% = %mb_used%
-    format-padding = 1
-    format-margin = 1
-    format-font = 2
-    #format-underline = #00aa00
-# --}
-
-[module/clementine]
-# --{
-    type = custom/script
-    exec-if = playerctl -p clementine status | grep -i "playing"
-    exec = playerctl -p clementine metadata --format '{{album}} - {{xesam:trackNumber}} - {{title}}'
-    interval = 5
-    format = <label>
-    label =   %output%
-    format-font = 3
-# --}
-
-[module/pacman_ipc]
-# --{
-    type = custom/ipc
-    hook-0 = echo " Updates: N/A"
-    hook-1 = echo " Updates: $(</tmp/pacman_updates.count)"
-    click-left = polybar-msg hook pacman_ipc 2
-    format = <output>
-    output =  Updates: %output%
-    format-font = 2
-    format-padding = 1
-    format-margin = 1
-    #format-underline = #fa00aa00
-    initial = 1
-# --}
-
-[module/cfg]
-# --{
-    type = custom/script
-    interval = 60
-    exec = git --git-dir=$HOME/.cfg/ --work-tree=$HOME status --porcelain | wc -l
-    format = <label>
-    label =  Changes: %output%
-    format-font = 2
-    format-padding = 1
-    format-margin = 1
-    #format-underline = #aaaa00
-# --}
-
-[module/hlwm-monitor0]
-# --{
-    type = custom/script
-    exec = /home/edward/.config/polybar/hlwm-monitor0.sh
-    tail = true
-    scroll-up = herbstclient use_index -1 --skip-visible &
-    scroll-down = herbstclient use_index +1 --skip-visible &
+    format-background = ${colors.slate-t}
+    format-font       = 3
+    format-padding    = 4
+    format-margin     = 2
 # --}
 
 ## ==================================================================== ##
@@ -320,10 +268,6 @@ enable-ipc = true
 modules-left  = info-hlwm-workspaces xwindow
 modules-center =
 modules-right = pulseaudio memory cpu battery filesystem pacman_ipc cfg cdate
-
-[bar/slate-tray]
-inherit = bar/slate
-;tray-position = right
 
 ###############################################################################
 # vim:ft=dosini
