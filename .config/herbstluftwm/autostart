@@ -14,6 +14,7 @@
 # 2021-10-15 reset movement keybinds to use arrow keys
 #            added keybinds to set layouts horizontal, vertical and max directly
 # 2021-10-16 moved all application keybinds back to HLWM; misc. tweaks
+# 2021-10-19 use $Mod-space for rofi application menu; $Mod-l to cycle layouts
 
 hc() {
     herbstclient "$@"
@@ -57,8 +58,8 @@ hc keybind $Mod-Shift-z spawn betterlockscreen -l
 hc keybind $Mod-Return  spawn alacritty
 
 # Application keybindings
-hc keybind $Mod-a       spawn   rofi -show combi
-hc keybind $Mod-p       spawn   rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
+hc keybind $Mod-space   spawn rofi -show combi
+hc keybind $Mod-p       spawn rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 
 hc keybind $Mod-b       chain : lock : use_index "4" : spawn brave : unlock             # browser → tag 5
 hc keybind $Mod-Shift-b chain : lock : use_index "5" : spawn brave --incognito : unlock # browser (private) → tag 6
@@ -153,7 +154,7 @@ hc keybind $Mod-g set_layout grid
 # The following cycles through the available layouts within a frame, but skips
 # layouts, if the layout change wouldn't affect the actual window positions.
 # I.e. if there are two windows within a frame, the grid layout is skipped.
-hc keybind $Mod-space                                                           \
+hc keybind $Mod-l                                                           \
             or , and . compare tags.focus.curframe_wcount = 2                   \
                      . cycle_layout +1 vertical horizontal max vertical grid    \
                , cycle_layout +1
