@@ -272,12 +272,12 @@ colors:
   # Bright colors
   bright:
     black:   '#555753'
-    red:     '#ef2929'
-    green:   '#8ae234'
-    yellow:  '#fce94f'
+    red:     '#ff0000'
+    green:   '#96f73b'
+    yellow:  '#ffe880'
     blue:    '#739fcf'
     magenta: '#ad7fa8'
-    cyan:    '#34e2e2'
+    cyan:    '#3bf4f7'
     white:   '#eeeeec'
 
   # Dim colors
@@ -302,7 +302,7 @@ colors:
   # Example:
   #   `- { index: 16, color: '#ff00ff' }`
   #
-  #indexed_colors: []
+  #indexed_colors: [ { index: 16, color: '#ff00ff' }]
 
 # Bell
 #

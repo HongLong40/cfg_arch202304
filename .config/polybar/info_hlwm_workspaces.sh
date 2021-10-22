@@ -15,11 +15,11 @@ herbstclient --idle "tag_*" 2>/dev/null | {
                 case ${i:0:1} in
                     '#')
                         # the tag is viewed on the focused monitor
-                        echo "%{F-}%{B#355B1A}"
+                        echo "%{F-}%{B#3A631C}"
                         ;;
                     ':')
                         # : the tag is not empty
-                        echo "%{F-}%{B#5B1A35}"
+                        echo "%{F-}%{B#631C3A}"
                         ;;
                     '!')
                         # ! the tag contains an urgent window
