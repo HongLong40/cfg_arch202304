@@ -3,6 +3,7 @@
 # 2021-07-04 Removed transparency from slate-p color
 # 2021-09-26 Changed label-maxlen from 100 to 200
 # 2021-10-17 Added module info_hwlm_workspaces. Cleaned up file
+# 2021-10-23 Added module info_hwlm_layout
 
 [global/wm]
 # https://github.com/jaagr/polybar/wiki/Configuration#global-wm-settings
@@ -164,6 +165,14 @@ format-offset     =
     #format-mounted-underline = #00aaaa
 # --}
 
+[module/info-hlwm-layout]
+# --{ HLWM layout info
+type = custom/script
+exec = /home/edward/.config/polybar/info_hwlm_layout.sh
+tail = true
+label-font=1
+# --}
+
 [module/info-hlwm-workspaces]
 # --{ HLWM workspace info
 type = custom/script
@@ -269,7 +278,7 @@ padding = 0
 enable-ipc = true
 ;cursor-scroll = ns-resize
 
-modules-left  = info-hlwm-workspaces xwindow
+modules-left  = info-hlwm-workspaces info-hlwm-layout xwindow
 modules-center =
 modules-right = pulseaudio memory cpu battery filesystem pacman_ipc cfg cdate
 

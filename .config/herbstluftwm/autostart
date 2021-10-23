@@ -15,6 +15,7 @@
 #            added keybinds to set layouts horizontal, vertical and max directly
 # 2021-10-16 moved all application keybinds back to HLWM; misc. tweaks
 # 2021-10-19 use $Mod-space for rofi application menu; $Mod-l to cycle layouts
+# 2021-10-23 added watch tags.focus.tiling.focused_frame.algorithm
 
 hc() {
     herbstclient "$@"
@@ -245,6 +246,9 @@ hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off
 
 hc set tree_style '╾│ ├└╼─┐'
 hc set swap_monitors_to_get_tag 1
+
+# set watch to trap layout changes for display in Polybar
+hc watch tags.focus.tiling.focused_frame.algorithm
 
 # unlock, just to be sure
 hc unlock
