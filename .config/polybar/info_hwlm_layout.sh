@@ -1,10 +1,10 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 herbstclient --idle "attribute_changed" 2>/dev/null | {
 
     while true
     do
-        # Read tags into $tags as array
+        # Read layout of focused frame
         _layout=$(herbstclient layout | awk -F ":" '/FOCUS/ { split($1,b," "); print b[2] }')
 
         {
@@ -21,7 +21,7 @@ herbstclient --idle "attribute_changed" 2>/dev/null | {
                     echo "  M  "
                     ;;
                 'vertical')
-                    echo "  V "
+                    echo "  V  "
                     ;;
                 *)
                     echo " ??? "
@@ -34,7 +34,7 @@ herbstclient --idle "attribute_changed" 2>/dev/null | {
         echo
 
         # wait for next event from herbstclient --idle
-        read -r || break
+        read || break
     done
 
 } 2>/dev/null

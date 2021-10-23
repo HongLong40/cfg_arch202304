@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 herbstclient --idle "tag_*" 2>/dev/null | {
 
@@ -7,9 +7,9 @@ herbstclient --idle "tag_*" 2>/dev/null | {
         typeset padding="    " # 4 spaces
 
         # Read tags into $tags as array
-        IFS=$'\t' read -ra tags <<< "$(herbstclient tag_status)"
+        tags=( $(herbstclient tag_status) )
         {
-            for i in "${tags[@]}"
+            for i in ${tags}
             do
                 # Read the prefix from each tag and render them according to that prefix
                 case ${i:0:1} in
@@ -44,7 +44,7 @@ herbstclient --idle "tag_*" 2>/dev/null | {
         echo
 
         # wait for next event from herbstclient --idle
-        read -r || break
+        read || break
     done
 
 } 2>/dev/null

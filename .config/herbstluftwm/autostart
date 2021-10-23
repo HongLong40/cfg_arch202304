@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 # config for herbstluftwm
 # 2021-05-01 Add dunst notification daemon
@@ -62,8 +62,8 @@ hc keybind $Mod-Return  spawn alacritty
 hc keybind $Mod-space   spawn rofi -show combi
 hc keybind $Mod-p       spawn rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 
-hc keybind $Mod-b       chain : lock : use_index "4" : spawn brave : unlock             # browser → tag 5
-hc keybind $Mod-Shift-b chain : lock : use_index "5" : spawn brave --incognito : unlock # browser (private) → tag 6
+hc keybind $Mod-b       chain : lock : use_index 4 : spawn brave : unlock             # browser → tag 5
+hc keybind $Mod-Shift-b chain : lock : use_index 5 : spawn brave --incognito : unlock # browser (private) → tag 6
 
 hc keybind Print          spawn flameshot gui  # screen capture
 hc keybind XF86Calculator spawn galculator     # calculator
@@ -116,25 +116,27 @@ hc set default_frame_layout horizontal
 # tags
 tag_names=( {1..9} )
 tag_keys=( {1..9} )
+typeset -i ws_index=0 # use this to set workspace indices, as zsh arrays are 1-based
 
-hc rename default "${tag_names[0]}" || true
-for i in "${!tag_names[@]}" ; do
+hc rename default "${tag_names[1]}" 2>/dev/null  || true
+for i in ${tag_names} ; do
     hc add "${tag_names[$i]}"
     key="${tag_keys[$i]}"
     if ! [ -z "$key" ] ; then
-        hc keybind "$Mod-$key" use_index "$i"
-        hc keybind "$Mod-Shift-$key" move_index "$i"
+        hc keybind "$Mod-$key" use_index $ws_index
+        hc keybind "$Mod-Shift-$key" move_index $ws_index
+        (( ws_index++ ))
     fi
 done
 
 # set default layout for 1st frame to horizontal
 # default_frame_layout does not apply for this frame
-hc load ${tag_names[0]} '(clients horizontal:0)'
+hc load ${tag_names[1]} '(clients horizontal:0)'
 
-# set default layout for tages "4", "5" and "6" to max
-hc load "4" '(clients max:0)'
-hc load "5" '(clients max:0)'
-hc load "6" '(clients max:0)'
+# set default layout for tags "4", "5" and "6" to max
+hc load ${tag_names[4]} '(clients max:0)'
+hc load ${tag_names[5]} '(clients max:0)'
+hc load ${tag_names[6]} '(clients max:0)'
 
 # cycle through tags
 hc keybind $Mod-period use_index +1 --skip-visible
