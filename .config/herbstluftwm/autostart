@@ -17,16 +17,9 @@
 # 2021-10-19 use $Mod-space for rofi application menu; $Mod-l to cycle layouts
 # 2021-10-23 added watch tags.focus.tiling.focused_frame.algorithm
 
-hc() {
-    herbstclient "$@"
-}
+hc() { herbstclient "$@" }
 
-run() {
-    if ! pgrep -f $1 ;
-    then
-        $@&
-    fi
-}
+run() { if ! pgrep -f $1 ; then $@&; fi }
 
 hc emit_hook reload
 
@@ -115,16 +108,15 @@ hc set default_frame_layout horizontal
 
 # tags
 tag_names=( {1..9} )
-tag_keys=( {1..9} )
 typeset -i ws_index=0 # use this to set workspace indices, as zsh arrays are 1-based
 
-hc rename default "${tag_names[1]}" 2>/dev/null  || true
-for i in ${tag_names} ; do
-    hc add "${tag_names[$i]}"
-    key="${tag_keys[$i]}"
-    if ! [ -z "$key" ] ; then
-        hc keybind "$Mod-$key" use_index $ws_index
-        hc keybind "$Mod-Shift-$key" move_index $ws_index
+hc rename default ${tag_names[1]} 2>/dev/null  || true
+for (( i = 1; i <= $#tag_names; i++ ))
+do
+    hc add ${tag_names[$i]}
+    if [[ $i -le 9 ]] ; then
+        hc keybind "$Mod-$i" use_index $ws_index
+        hc keybind "$Mod-Shift-$i" move_index $ws_index
         (( ws_index++ ))
     fi
 done
@@ -145,14 +137,14 @@ hc keybind $Mod-comma  use_index -1 --skip-visible
 # layout
 hc keybind $Mod-r       remove
 hc keybind $Mod-s       floating   toggle
-hc keybind $Mod-f       fullscreen toggle
-hc keybind $Mod-Shift-f set_attr   clients.focus.floating toggle
+hc keybind $Mod-f       set_attr   clients.focus.floating toggle
+hc keybind $Mod-Shift-f fullscreen toggle
 hc keybind $Mod-Shift-p pseudotile toggle
 
-hc keybind $Mod-v set_layout vertical
+hc keybind $Mod-g set_layout grid
 hc keybind $Mod-h set_layout horizontal
 hc keybind $Mod-m set_layout max
-hc keybind $Mod-g set_layout grid
+hc keybind $Mod-v set_layout vertical
 
 # The following cycles through the available layouts within a frame, but skips
 # layouts, if the layout change wouldn't affect the actual window positions.

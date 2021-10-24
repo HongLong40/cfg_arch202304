@@ -168,7 +168,7 @@ format-offset     =
 [module/info-hlwm-layout]
 # --{ HLWM layout info
 type = custom/script
-exec = /home/edward/.config/polybar/info_hwlm_layout.sh
+exec = /home/edward/.config/polybar/info_hlwm_layout.sh
 tail = true
 label-font=1
 # --}
