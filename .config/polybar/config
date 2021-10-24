@@ -170,6 +170,9 @@ format-offset     =
 type = custom/script
 exec = /home/edward/.config/polybar/info_hlwm_layout.sh
 tail = true
+format = <label>
+format-padding = 4
+label = %output%
 label-font=1
 # --}
 
@@ -248,7 +251,7 @@ label-font=1
 
     format-background = ${colors.slate-t}
     format-font       = 3
-    format-padding    = 4
+    format-padding    = 20
     format-margin     = 2
 # --}
 
@@ -278,8 +281,8 @@ padding = 0
 enable-ipc = true
 ;cursor-scroll = ns-resize
 
-modules-left  = info-hlwm-workspaces info-hlwm-layout xwindow
-modules-center =
+modules-left  = info-hlwm-workspaces info-hlwm-layout
+modules-center = xwindow
 modules-right = pulseaudio memory cpu battery filesystem pacman_ipc cfg cdate
 
 ###############################################################################
