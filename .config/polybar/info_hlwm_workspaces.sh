@@ -2,10 +2,10 @@
 
 herbstclient --idle "tag_*" 2>/dev/null | {
 
+    typeset padding="    " # 4 spaces
+
     while true
     do
-        typeset padding="    " # 4 spaces
-
         # Read tags into $tags as array
         tags=( $(herbstclient tag_status) )
         {
