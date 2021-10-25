@@ -171,8 +171,8 @@ type = custom/script
 exec = /home/edward/.config/polybar/info_hlwm_layout.sh
 tail = true
 format = <label>
-format-padding = 4
-label = %output%
+;format-padding = 4
+label = %{B#1A5920}    λ%output%    %{B-}
 label-font=1
 # --}
 
