@@ -38,7 +38,7 @@ do
     checkupdates 2> /dev/null | sed 's/^/Arch /' > /tmp/pacman_updates_hc
     paru -Qum 2> /dev/null | sed 's/^/AUR  /' >> /tmp/pacman_updates_hc
 
-    curr_update_count=$(cat /tmp/pacman_updates_hc | wc -l | tee /tmp/pacman_updates.count)
+    curr_update_count=$(cat /tmp/pacman_updates_hc | wc -l)
     
     write_log "Current Update Count: ..$curr_update_count.."
     

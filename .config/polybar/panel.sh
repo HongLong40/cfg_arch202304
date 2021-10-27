@@ -6,13 +6,8 @@ rm -f $SEMAPHORE
 
 if [[ -z $(pgrep -x polybar) ]]
 then
-    m=$(polybar --list-monitors | grep  "primary" | cut -d":" -f 1)
+    m=$(polybar --list-monitors | awk -F ":" '/primary/ { print $1 }')
     MONITOR=$m polybar --reload slate &
-
-    # for m in $(polybar --list-monitors | cut -d":" -f 1)
-    # do
-    #     MONITOR=$m polybar --reload slate &
-    # done
 else    
     polybar-msg cmd restart
     dunstify -t 2000 "Polybars Restarted"
