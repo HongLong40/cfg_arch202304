@@ -2,8 +2,9 @@
 # 2021-06-26 Removed underlines from right-hand modules; added click-left action for pacman-ipc module
 # 2021-07-04 Removed transparency from slate-p color
 # 2021-09-26 Changed label-maxlen from 100 to 200
-# 2021-10-17 Added module info_hwlm_workspaces. Cleaned up file
-# 2021-10-23 Added module info_hwlm_layout
+# 2021-10-17 Added module info-hlwm-workspaces. Cleaned up file
+# 2021-10-23 Added module info-hlwm-layout
+# 2021-10-26 Added module info-pacman-updates-hc and replaced pacman_ipc in modules-right
 
 [global/wm]
 # https://github.com/jaagr/polybar/wiki/Configuration#global-wm-settings
@@ -184,6 +185,16 @@ tail = true
 label-font=1
 # --}
 
+[module/info-pacman-updates-hc]
+# --{ HLWM workspace info
+type = custom/script
+exec = /home/edward/.config/polybar/info_pacman_updates_hc.sh
+format = <label>
+tail = true
+label =  Updates: %output% 
+label-font=2
+# --}
+
 [module/memory]
 # --{
     type = internal/memory
@@ -283,7 +294,7 @@ enable-ipc = true
 
 modules-left  = info-hlwm-workspaces info-hlwm-layout
 modules-center = xwindow
-modules-right = pulseaudio memory cpu battery filesystem pacman_ipc cfg cdate
+modules-right = pulseaudio memory cpu battery filesystem info-pacman-updates-hc cfg cdate
 
 ###############################################################################
 # vim:ft=dosini

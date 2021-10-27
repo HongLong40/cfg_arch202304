@@ -21,12 +21,12 @@ fi
 echo $(date "+%Y-%m-%d %T") polybars started > $SEMAPHORE
 
 # start pacman update monitoring script (used by polybar pacman script module)
-if [[ -z $(pidof -x "$HOME/.config/polybar/check_pacman_updates.sh") ]]
-then
-    "$HOME/.config/polybar/check_pacman_updates.sh" &
-else
-    echo "Sending msg to polybars"
-    sleep 5
-    polybar-msg hook pacman_ipc 2 || true
-fi
+#if [[ -z $(pidof -x "$HOME/.config/polybar/check_pacman_updates.sh") ]]
+#then
+#    "$HOME/.config/polybar/check_pacman_updates.sh" &
+#else
+#    echo "Sending msg to polybars"
+#    sleep 5
+#    polybar-msg hook pacman_ipc 2 || true
+#fi
 
