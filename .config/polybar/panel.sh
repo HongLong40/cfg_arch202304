@@ -2,26 +2,32 @@
 
 typeset SEMAPHORE="/tmp/polybar_started"
 
-rm -f $SEMAPHORE
-
 if [[ -z $(pgrep -x polybar) ]]
 then
     m=$(polybar --list-monitors | awk -F ":" '/primary/ { print $1 }')
     MONITOR=$m polybar --reload slate &
+
+    rm -f $SEMAPHORE
+    echo $(date "+%Y-%m-%d %T") polybar started > $SEMAPHORE
 else    
-    polybar-msg cmd restart
+    polybar-msg cmd restart & disown
     dunstify -t 2000 "Polybars Restarted"
+    echo $(date "+%Y-%m-%d %T") polybar restarted >> $SEMAPHORE
 fi
 
-echo $(date "+%Y-%m-%d %T") polybars started > $SEMAPHORE
+
+# start herbstclient idler for layout and workspace changes
+if [[ -z $(pidof -x "polybar_hlwm_handle_events.sh") ]]
+then
+    "$HOME/.config/polybar/polybar_hlwm_handle_events.sh" &
+fi
 
 # start pacman update monitoring script (used by polybar pacman script module)
-#if [[ -z $(pidof -x "$HOME/.config/polybar/check_pacman_updates.sh") ]]
-#then
-#    "$HOME/.config/polybar/check_pacman_updates.sh" &
-#else
-#    echo "Sending msg to polybars"
-#    sleep 5
-#    polybar-msg hook pacman_ipc 2 || true
-#fi
+if  [[ -z $(pidof -x "check_pacman_updates.sh") ]]
+then
+    "$HOME/.config/polybar/check_pacman_updates.sh" &
+else
+    sleep 10 # wait for polybar to be ready to receive messages
+    polybar-msg hook pacman_updates 2
+fi
 

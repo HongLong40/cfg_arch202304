@@ -3,6 +3,7 @@
 # check if script is already running
 for pid in $(pidof -x check_pacman_updates.sh)
 do
+    echo $pid
     if [[ $pid != $$ ]]
     then
         echo "[$(date)] : check_pacman_updates.sh : Process is already running with PID $pid"

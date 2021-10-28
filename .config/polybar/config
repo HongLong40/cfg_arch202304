@@ -5,6 +5,7 @@
 # 2021-10-17 Added module info-hlwm-workspaces. Cleaned up file
 # 2021-10-23 Added module info-hlwm-layout
 # 2021-10-26 Added module info-pacman-updates-hc and replaced pacman_ipc in modules-right
+# 2021-10-28 Use IPC to update hlwm layout, hlwm workspaces and pacman updates.
 
 [global/wm]
 # https://github.com/jaagr/polybar/wiki/Configuration#global-wm-settings
@@ -166,35 +167,6 @@ format-offset     =
     #format-mounted-underline = #00aaaa
 # --}
 
-[module/info-hlwm-layout]
-# --{ HLWM layout info
-type = custom/script
-exec = /home/edward/.config/polybar/info_hlwm_layout.sh
-tail = true
-format = <label>
-;format-padding = 4
-label = %{B#1A5920}    λ%output%    %{B-}
-label-font=1
-# --}
-
-[module/info-hlwm-workspaces]
-# --{ HLWM workspace info
-type = custom/script
-exec = /home/edward/.config/polybar/info_hlwm_workspaces.sh
-tail = true
-label-font=1
-# --}
-
-[module/info-pacman-updates-hc]
-# --{ HLWM workspace info
-type = custom/script
-exec = /home/edward/.config/polybar/info_pacman_updates_hc.sh
-format = <label>
-tail = true
-label =  Updates: %output% 
-label-font=2
-# --}
-
 [module/memory]
 # --{
     type = internal/memory
@@ -211,18 +183,41 @@ label-font=2
     #format-underline = #00aa00
 # --}
 
-[module/pacman_ipc]
+[module/hlwm_layout]
+# --{
+    type = custom/ipc
+    hook-0 = /home/edward/.config/polybar/get_info_hlwm_layout.sh
+    initial = 1
+    format = <output>
+    output = %{B#1A5920}    λ%output%    %{B-}
+    format-font = 1
+    format-padding = 0
+    format-margin = 0
+# --}
+
+[module/hlwm_workspaces]
+# --{
+    type = custom/ipc
+    hook-0 = /home/edward/.config/polybar/get_info_hlwm_workspaces.sh
+    initial = 1
+    format = <output>
+    output = %output%
+    format-font = 1
+    format-padding = 0
+    format-margin = 0
+# --}
+
+[module/pacman_updates]
 # --{
     type = custom/ipc
     hook-0 = echo " Updates: N/A"
     hook-1 = echo " Updates: $(</tmp/pacman_updates.count)"
-    click-left = polybar-msg hook pacman_ipc 2
+    click-left = polybar-msg hook pacman_updates 2
     format = <output>
     output =  Updates: %output%
     format-font = 2
     format-padding = 1
     format-margin = 1
-    #format-underline = #fa00aa00
     initial = 1
 # --}
 
@@ -292,9 +287,9 @@ padding = 0
 enable-ipc = true
 ;cursor-scroll = ns-resize
 
-modules-left  = info-hlwm-workspaces info-hlwm-layout
+modules-left  = hlwm_workspaces hlwm_layout
 modules-center = xwindow
-modules-right = pulseaudio memory cpu battery filesystem info-pacman-updates-hc cfg cdate
+modules-right = pulseaudio memory cpu battery filesystem pacman_updates cfg cdate
 
 ###############################################################################
 # vim:ft=dosini
