@@ -44,10 +44,17 @@ done
 # infinite loop: get updates count, update polybar, sleep until next cycle
 while true
 do
-    checkupdates 2> /dev/null | sed 's/^/Arch /' > /tmp/pacman_updates
-    paru -Qum 2> /dev/null | sed 's/^/AUR  /' >> /tmp/pacman_updates
+    _update_count_arch=$(checkupdates 2> /dev/null | sed 's/^/Arch /' > /tmp/pacman_updates | wc -l)
+    _update_count_aur=$(paru -Qum 2> /dev/null | sed 's/^/AUR  /' >> /tmp/pacman_updates | wc -l)
 
-    curr_update_count=$(cat /tmp/pacman_updates | wc -l | tee /tmp/pacman_updates.count)
+    if [[ ( ${_update_count_arch} -eq 0 ) && ( ${_update_count_aur} -eq 0 ) ]]
+    then
+        echo - "-" > /tmp/pacman_updates.count
+    else
+        echo ${_update_count_arch}"."${_update_count_aur} > /tmp/pacman_updates.count
+    fi
+    
+    curr_update_count=$(( $_update_count_arch + $_update_count_aur ))
     
     write_log "Current Update Count: ..$curr_update_count.."
     

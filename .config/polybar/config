@@ -111,7 +111,8 @@ format-offset     =
 # --{
     type = custom/script
     interval = 60
-    exec = git --git-dir=$HOME/.cfg/ --work-tree=$HOME status --porcelain | wc -l
+    exec = /home/edward/.config/polybar/get_info_cfg.sh
+    ;exec = git --git-dir=$HOME/.cfg/ --work-tree=$HOME status --porcelain | wc -l
     format = <label>
     label =  Changes: %output%
     format-font = 2
