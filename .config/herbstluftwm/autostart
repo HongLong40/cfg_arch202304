@@ -16,6 +16,7 @@
 # 2021-10-16 moved all application keybinds back to HLWM; misc. tweaks
 # 2021-10-19 use $Mod-space for rofi application menu; $Mod-l to cycle layouts
 # 2021-10-23 added watch tags.focus.tiling.focused_frame.algorithm
+# 2021-10-31 don't run conky
 
 hc() { herbstclient "$@" }
 
@@ -26,7 +27,7 @@ hc emit_hook reload
 xsetroot -solid '#19202A'
 
 # start conky
-run conky --daemonize --pause=1
+#run conky --daemonize --pause=1
 
 # start notification daemon (moved from .xprofile to fix font size being too big)
 run dunst &

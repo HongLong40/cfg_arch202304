@@ -6,6 +6,7 @@
 # 2021-10-23 Added module info-hlwm-layout
 # 2021-10-26 Added module info-pacman-updates-hc and replaced pacman_ipc in modules-right
 # 2021-10-28 Use IPC to update hlwm layout, hlwm workspaces and pacman updates.
+# 2021-10-31 Added mouse actions to hlwm layout, hlwm workspaces
 
 [global/wm]
 # https://github.com/jaagr/polybar/wiki/Configuration#global-wm-settings
@@ -189,6 +190,7 @@ format-offset     =
     type = custom/ipc
     hook-0 = /home/edward/.config/polybar/get_info_hlwm_layout.sh
     initial = 1
+    click-left = polybar-msg hook hlwm_layout 1
     format = <output>
     output = %{B#1A5920}    λ%output%    %{B-}
     format-font = 1
@@ -201,6 +203,7 @@ format-offset     =
     type = custom/ipc
     hook-0 = /home/edward/.config/polybar/get_info_hlwm_workspaces.sh
     initial = 1
+    click-right = polybar-msg hook hlwm_workspaces 1
     format = <output>
     output = %output%
     format-font = 1
@@ -250,16 +253,39 @@ format-offset     =
     #format-muted-underline = #00aaaa
 # --}
 
+[module/temperature]
+# --{
+    type = custom/script
+    interval = 10
+    exec = /home/edward/.config/polybar/get_info_temperature.sh
+    format = <label>
+    label =  Core %output%
+    format-font = 2
+    format-padding = 1
+    format-margin = 1
+# --}
+
+[module/uptime]
+# --{
+    type = custom/script
+    interval = 60
+    exec = /home/edward/.config/polybar/get_info_uptime.sh
+    format = <label>
+    label = Up %output%
+    format-font = 2
+    format-padding = 1
+    format-margin = 1
+# --}
+
 [module/xwindow]
 # --{ https://github.com/jaagr/polybar/wiki/Module:-xwindow
     type = internal/xwindow
     label = %title%
     label-maxlen = 200
-
     format-background = ${colors.slate-t}
     format-font       = 3
     format-padding    = 20
-    format-margin     = 2
+    format-margin     = 0
 # --}
 
 ## ==================================================================== ##
@@ -290,7 +316,7 @@ enable-ipc = true
 
 modules-left  = hlwm_workspaces hlwm_layout
 modules-center = xwindow
-modules-right = pulseaudio memory cpu battery filesystem pacman_updates cfg cdate
+modules-right = pulseaudio temperature memory cpu battery filesystem pacman_updates cfg cdate
 
 ###############################################################################
 # vim:ft=dosini
