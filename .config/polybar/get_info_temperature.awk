@@ -1,21 +1,20 @@
-#!/bin/awk
+#!/bin/awk -f
 
-BEGIN {
-    t = 0
-    i = 0
-    tmax = 0
-    tmin = 999
-}   
+# Calculate average and max core temperature. Input for the script comes from the sensors program
+# Sample row:
+#       Core 0:        +42.0°C  (high = +100.0°C, crit = +100.0°C)
+
+
+BEGIN { i = 0; tavg = 0; tmax = 0 }   
 /Core/ {
     ti = $3;
     gsub(/\+|°C/,"",ti);
-    t += ti;
+    tavg += ti;
     i++;
     if ( ti >= tmax ) { tmax = ti };
-    if ( ti <= tmin ) { tmin = ti };
 }
 END {
-    t = t / i;
-    printf("Avg: %.1f°C\nMin: %.1f°C\nMax: %.1f°C\n" , t, tmin, tmax);
+    tavg = tavg / i;
+    printf("Avg: %.1f°C Max: %.1f°C\n" , tavg, tmax);
 }
 
