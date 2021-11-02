@@ -217,6 +217,7 @@ format-offset     =
     hook-0 = echo " Updates: N/A"
     hook-1 = echo " Updates: $(</tmp/pacman_updates.count)"
     click-left = polybar-msg hook pacman_updates 2
+    click-right = /home/edward/.config/polybar/get_info_pacman_updates.sh 2>/dev/null
     format = <output>
     output =  Updates: %output%
     format-font = 2

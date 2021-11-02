@@ -2,7 +2,18 @@
 
 setopt localoptions
 
-chosen=$(pactl list short sinks | awk '{ print $1,$2,$7 }' | rofi -dmenu -i -l 3 -location 3 -width 30 -xoffset -5 -yoffset 30 -p "🎜 🎚 Select Sink" -theme-str 'entry {enabled: false;} window {width: 25%;}' )
+_sinks=$(pactl list short sinks)
+
+_lines=$(echo ${_sinks} | wc -l)
+
+chosen=$(echo ${_sinks} | awk '{ print $1,$2,$7 }' | \
+    rofi \
+    -dmenu \
+    -i \
+    -xoffset -6 \
+    -yoffset 30 \
+    -p "🎜 🎚 Select Sink" \
+    -theme-str "entry {enabled: false;} window {width: 25%; location: north east;} listview {lines: ${_lines};}" )
 
 typeset -A sink
 sink=( $( echo $chosen | awk '{ print "id",$1,"nm",$2 }' ) )
