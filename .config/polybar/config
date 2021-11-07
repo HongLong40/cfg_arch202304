@@ -7,6 +7,7 @@
 # 2021-10-26 Added module info-pacman-updates-hc and replaced pacman_ipc in modules-right
 # 2021-10-28 Use IPC to update hlwm layout, hlwm workspaces and pacman updates.
 # 2021-10-31 Added mouse actions to hlwm layout, hlwm workspaces
+# 2021-11-07 Add right-click action to module/cfg
 
 [global/wm]
 # https://github.com/jaagr/polybar/wiki/Configuration#global-wm-settings
@@ -113,7 +114,6 @@ format-offset     =
     type = custom/script
     interval = 60
     exec = /home/edward/.config/polybar/get_info_cfg.sh
-    ;exec = git --git-dir=$HOME/.cfg/ --work-tree=$HOME status --porcelain | wc -l
     format = <label>
     label =  Changes: %output%
     format-font = 2
@@ -121,6 +121,7 @@ format-offset     =
     format-margin = 1
     #format-underline = #aaaa00
     click-left = dunstctl history-pop
+    click-right=/home/edward/.config/polybar/get_info_cfg_status.sh
 # --}
 
 [module/cpu]

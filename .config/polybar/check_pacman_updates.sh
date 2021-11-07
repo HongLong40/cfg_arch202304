@@ -23,8 +23,7 @@ rm -f $LOG
 write_log "Starting $0 with PID = $$"
 
 # load parameters
-typeset -A pbc
-pbc=( $(<$CONFIG) )
+typeset -A pbc=( $(<$CONFIG) )
 
 write_log "Polling Interval = ${pbc[poll_interval]}"
 
@@ -36,7 +35,7 @@ typeset -i counter=1
 # Wait for up to 15s, as polybars need to start up
 while [[ (! -f /tmp/polybar_started) && $counter -le 15 ]]
 do
-    echo file not found $counter
+    write_log "file not found $counter"
     sleep 1
     (( counter++ ))
 done
