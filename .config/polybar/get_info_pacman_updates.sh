@@ -9,7 +9,7 @@ if [[ ${_lines_inp} == "-" ]]
 then
     exit 0
 else
-    _lines=${_lines_inp}
+    _lines=$(</tmp/pacman_updates | wc -l)
 fi
 
 if [[ ${_lines} -gt ${_max_lines} ]]
