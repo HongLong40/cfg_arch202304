@@ -1,12 +1,14 @@
 #!/bin/zsh
 
+typeset PROGNAME=$(basename $0)
+
 # check if script is already running
-for pid in $(pidof -x check_pacman_updates.sh)
+for pid in $(pidof -x $PROGNAME)
 do
     echo $pid
     if [[ $pid != $$ ]]
     then
-        echo "[$(date)] : check_pacman_updates.sh : Process is already running with PID $pid"
+        echo "[$(date)] : $PROGNAME: Process is already running with PID $pid"
         exit 1
     fi
 done
@@ -20,7 +22,7 @@ write_log() { echo $(date "+%Y-%m-%d %T") "$@" >> $LOG }
 
 # initialize log
 rm -f $LOG
-write_log "Starting $0 with PID = $$"
+write_log "Starting $PROGNAME with PID = $$"
 
 # load parameters
 typeset -A pbc=( $(<$CONFIG) )
@@ -55,7 +57,7 @@ do
     
     curr_update_count=$(( $_update_count_arch + $_update_count_aur ))
     
-    write_log "Current Update Count: ..$curr_update_count.."
+    write_log "Update Count: ..$curr_update_count.."
     
     if [[ ($last_update_count -ne $curr_update_count) ]]
     then
