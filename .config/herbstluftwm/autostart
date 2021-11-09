@@ -17,6 +17,7 @@
 # 2021-10-19 use $Mod-space for rofi application menu; $Mod-l to cycle layouts
 # 2021-10-23 added watch tags.focus.tiling.focused_frame.algorithm
 # 2021-10-31 don't run conky
+# 2021-11-09 moved dunst startup to bottom of script, to ensure that window manager has started
 
 hc() { herbstclient "$@" }
 
@@ -28,9 +29,6 @@ xsetroot -solid '#19202A'
 
 # start conky
 #run conky --daemonize --pause=1
-
-# start notification daemon (moved from .xprofile to fix font size being too big)
-run dunst &
 
 if hc silent new_attr bool my_not_first_autostart
 then
@@ -252,6 +250,9 @@ hc unlock
 # hc set_monitors 1920x1080+0+0 1920x1080+1920+0
 # or simply:
 hc detect_monitors
+
+# start notification daemon (moved from .xprofile to fix font size being too big)
+run dunst &
 
 # start polybar panels
 ~/.config/polybar/panel.sh &
