@@ -18,6 +18,9 @@
 # 2021-10-23 added watch tags.focus.tiling.focused_frame.algorithm
 # 2021-10-31 don't run conky
 # 2021-11-09 moved dunst startup to bottom of script, to ensure that window manager has started
+# 2021-11-11 moved dunst to panel.sh script, to better intergrate with polybar handling
+#            start xfce4-power-manager here instead of in ~/.xprofile, as it requires the notification
+#            daemon (dunst) which itself requires X to be running and have $DISPLAY set.
 
 hc() { herbstclient "$@" }
 
@@ -30,6 +33,10 @@ xsetroot -solid '#19202A'
 # start conky
 #run conky --daemonize --pause=1
 
+# start power manager
+run xfce4-power-manager
+
+# set focus to first monitor and position mouse top right
 if hc silent new_attr bool my_not_first_autostart
 then
     synology-cloud-station-drive autostart &
@@ -251,13 +258,9 @@ hc unlock
 # or simply:
 hc detect_monitors
 
-# start notification daemon (moved from .xprofile to fix font size being too big)
-run dunst &
-
-# start polybar panels
+# start polybar panel and related scripts. Also starts dunst if it is not already running
 ~/.config/polybar/panel.sh &
 
-# set focus to first monitor and position mouse top right
 hc focus_monitor 0
 xpos=$(hc list_monitors | awk -F "x" '/0:/ { split($1,b," "); print b[2]-30 }')
 xte "mousemove $xpos 30"

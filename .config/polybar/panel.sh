@@ -10,8 +10,8 @@ then
     rm -f $SEMAPHORE
     echo $(date "+%Y-%m-%d %T") polybar started > $SEMAPHORE
 else    
-    polybar-msg cmd restart & disown
-    dunstify -t 2000 "Polybars Restarted"
+    polybar-msg cmd restart
+    notify-send -t 3000 -u low "Polybars Restarted"
     echo $(date "+%Y-%m-%d %T") polybar restarted >> $SEMAPHORE
 fi
 
@@ -21,6 +21,9 @@ if [[ -z $(pidof -x "polybar_hlwm_handle_events.sh") ]]
 then
     "$HOME/.config/polybar/polybar_hlwm_handle_events.sh" &
 fi
+
+# start dunst notification daemon if it has not already started
+if ! pgrep -f dunst; then dunst &; fi
 
 # start pacman update monitoring script (used by polybar pacman script module)
 if  [[ -z $(pidof -x "check_pacman_updates.sh") ]]

@@ -64,7 +64,7 @@ do
         last_update_count=$curr_update_count
         polybar-msg hook ${pbc[hook_name]} ${pbc[hook_id]} || true
         if [[ $curr_update_count -ne 0 ]]; then
-            dunstify -t 5000 "$curr_update_count New Pacman Updates Available"
+            notify-send -t 5000 "$curr_update_count Pacman Update(s) Available"
         fi
     fi
 
