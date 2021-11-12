@@ -13,6 +13,12 @@ do
     fi
 done
 
+TRAPHUP TRAPTERM() {
+        echo "[$(date)] : $PROGNAME stopped" >> /tmp/${PROGNAME}.log
+        rm -f /tmp/pacman_updates*
+        exit 0
+}
+
 # Defaults
 typeset CONFIG=$HOME/.config/polybar/check_pacman_updates.config 
 typeset LOG=$HOME/.config/polybar/check_pacman_updates.log
@@ -68,7 +74,8 @@ do
         fi
     fi
 
-    sleep ${pbc[poll_interval]}
+    sleep ${pbc[poll_interval]} &
+    wait $!
 done
 
 # vim:ft=zsh:

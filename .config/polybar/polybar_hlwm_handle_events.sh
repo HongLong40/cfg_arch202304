@@ -13,6 +13,12 @@ do
     fi
 done
 
+TRAPTERM() {
+        echo "[$(date)] : $PROGNAME stopped" >> /tmp/${PROGNAME}.log
+        exit 0
+}
+
+
 herbstclient --idle | {
 
     while read -A event
