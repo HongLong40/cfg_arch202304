@@ -115,7 +115,7 @@ format-offset     =
     interval = 60
     exec = /home/edward/.config/polybar/get_info_cfg.sh
     format = <label>
-    label =  Changes: %output%
+    label =  %output%
     format-font = 2
     format-padding = 1
     format-margin = 1
@@ -215,12 +215,12 @@ format-offset     =
 [module/pacman_updates]
 # --{
     type = custom/ipc
-    hook-0 = echo " Updates: N/A"
-    hook-1 = echo " Updates: $(</tmp/pacman_updates.count)"
+    hook-0 = echo " N/A"
+    hook-1 = echo " $(</tmp/pacman_updates.count)"
     click-left = polybar-msg hook pacman_updates 2
     click-right = /home/edward/.config/polybar/get_info_pacman_updates.sh 2>/dev/null
     format = <output>
-    output =  Updates: %output%
+    output =  %output%
     format-font = 2
     format-padding = 1
     format-margin = 1
