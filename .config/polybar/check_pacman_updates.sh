@@ -14,43 +14,31 @@ do
 done
 
 TRAPHUP TRAPTERM() {
-        echo "[$(date)] : $PROGNAME stopped" >> /tmp/${PROGNAME}.log
-        rm -f /tmp/pacman_updates*
-        exit 0
+    echo "[$(date)] : $PROGNAME stopped" >> /tmp/${PROGNAME}.log
+    rm -f /tmp/pacman_updates*
+    exit 0
 }
+
+TRAPUSR1() {
+    write_log "refreshing update counts"
+    kill $pid 2> /dev/null || true
+}
+
 
 # Defaults
 typeset CONFIG=$HOME/.config/polybar/check_pacman_updates.config 
 typeset LOG=$HOME/.config/polybar/check_pacman_updates.log
-
-# define write_log function
-write_log() { echo $(date "+%Y-%m-%d %T") "$@" >> $LOG }
-
-# initialize log
-rm -f $LOG
-write_log "Starting $PROGNAME with PID = $$"
-
-# load parameters
-typeset -A pbc=( $(<$CONFIG) )
-
-write_log "Polling Interval = ${pbc[poll_interval]}"
 
 # define tracking variables
 typeset -i last_update_count=-1
 typeset -i curr_update_count=0
 typeset -i counter=1
 
-# Wait for up to 15s, as polybars need to start up
-while [[ (! -f /tmp/polybar_started) && $counter -le 15 ]]
-do
-    write_log "file not found $counter"
-    sleep 1
-    (( counter++ ))
-done
+# define write_log function
+write_log() { echo $(date "+%Y-%m-%d %T") "$@" >> $LOG }
 
-# infinite loop: get updates count, update polybar, sleep until next cycle
-while true
-do
+#define check_update function
+check_update() {
     _update_count_arch=$(checkupdates 2> /dev/null | sed 's/^/Arch /' > /tmp/pacman_updates | wc -l)
     _update_count_aur=$(paru -Qum 2> /dev/null | sed 's/^/AUR  /' >> /tmp/pacman_updates | wc -l)
 
@@ -73,9 +61,33 @@ do
             notify-send -t 5000 "$curr_update_count Pacman Update(s) Available"
         fi
     fi
+}
 
+
+# initialize log
+rm -f $LOG
+write_log "Starting $PROGNAME with PID = $$"
+
+# load parameters
+typeset -A pbc=( $(<$CONFIG) )
+
+write_log "Polling Interval = ${pbc[poll_interval]}"
+
+# Wait for up to 15s, as polybars need to start up
+while [[ (! -f /tmp/polybar_started) && $counter -le 15 ]]
+do
+    write_log "file not found $counter"
+    sleep 1
+    (( counter++ ))
+done
+
+# infinite loop: get updates count, update polybar, sleep until next cycle
+while true
+do
+    check_update
     sleep ${pbc[poll_interval]} &
-    wait $!
+    pid=$!
+    wait
 done
 
 # vim:ft=zsh:
