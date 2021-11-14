@@ -30,6 +30,8 @@ hc emit_hook reload
 
 xsetroot -solid '#19202A'
 
+systemctl start --user dunst
+
 # start conky
 #run conky --daemonize --pause=1
 

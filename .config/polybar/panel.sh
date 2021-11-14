@@ -41,7 +41,8 @@ else
 fi
 
 # start dunst notification daemon if it has not already started
-if [[ ! $(pgrep -f dunst) ]]; then dunst & fi
+#if [[ ! $(pgrep -f dunst) ]]; then dunst & fi
+#systemctl start --user dunst
 
 # start pacman update monitoring script (used by polybar pacman script module)
 if $(check_ok_to_start /tmp/check_pacman_updates.pid)
