@@ -1,23 +1,29 @@
 #!/bin/zsh
 
 typeset PROGNAME=$(basename $0)
+typeset PIDFILE="/tmp/polybar_hlwm_handle_events.pid"
 
 # check if script is already running
-for pid in $(pidof -x $PROGNAME)
-do
-    echo $pid
-    if [[ $pid != $$ ]]
+if [[ -f $PIDFILE ]]
+then
+    pid=$(<${PIDFILE})
+
+    if kill -0 $pid
     then
         echo "[$(date)] : $PROGNAME: Process is already running with PID $pid"
         exit 1
     fi
-done
+fi
 
-TRAPTERM() {
+# create pid file
+echo $$ > $PIDFILE
+
+
+TRAPHUP TRAPTERM() {
         echo "[$(date)] : $PROGNAME stopped" >> /tmp/${PROGNAME}.log
+        rm -f $PIDFILE
         exit 0
 }
-
 
 herbstclient --idle | {
 
@@ -37,3 +43,6 @@ herbstclient --idle | {
     done
 
 } 2>/dev/null
+
+rm -f $PIDFILE
+
