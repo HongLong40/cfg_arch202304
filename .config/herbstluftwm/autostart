@@ -238,3 +238,4 @@ hc detect_monitors
 hc focus_monitor 0
 xpos=$(hc list_monitors | awk -F "x" '/0:/ { split($1,b," "); print b[2]-30 }')
 xte "mousemove $xpos 30"
+
