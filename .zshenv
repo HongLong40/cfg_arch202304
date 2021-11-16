@@ -7,5 +7,5 @@ export XDG_DATA_HOME="$HOME/.local/share"
 
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 
-export HISTFILE="$ZDOTDIR/.zsh_history"    # History filepath
+export HISTFILE="$ZDOTDIR/.zhistory"    # History filepath
 export XINITRC="${XDG_CONFIG_HOME}/X11/xinitrc"
