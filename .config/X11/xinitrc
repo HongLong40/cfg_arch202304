@@ -1,15 +1,5 @@
 #!/bin/env zsh
 
-# Load profile
-for file in "/etc/profile" "$HOME/.profile" "/etc/xprofile" "$HOME/.config/X11/xprofile"
-do
-    if [ -f "$file" ]
-    then
-        echo "Loading profile from $file";
-        . "$file"
-    fi
-done
-
 # Load resources
 for file in "/etc/X11/Xresources" "$HOME/.config/X11/Xresources"
 do
@@ -33,6 +23,18 @@ then
         fi
     done
 fi
+
+# start authentication agent
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+
+# set compose key to Left_Alt
+setxkbmap -option compose:ralt
+
+# start clipboard history manager
+greenclip daemon &
+
+# set numlock
+numlockx &
 
 # set screen layout
 ~/.screenlayout/display.sh

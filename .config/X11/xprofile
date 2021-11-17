@@ -4,14 +4,14 @@
 # 2021-11-11 Move xfce4-power-manager to ~/.config/herbstluftwm/autostart. The power manager tries to call
 #            the notification service which will not have started yet. This leads to dunst core dumps.
 
-/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-
-# set compose key to Left_Alt
-setxkbmap -option compose:ralt
-
-# start clipboard history manager
-greenclip daemon &
-
-# set numlock
-numlockx &
+## /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+## 
+## # set compose key to Left_Alt
+## Setxkbmap -option compose:ralt
+## 
+## # start clipboard history manager
+## Greenclip daemon &
+## 
+## # set numlock
+## Numlockx &
 
