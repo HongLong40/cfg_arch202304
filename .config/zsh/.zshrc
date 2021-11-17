@@ -24,6 +24,7 @@ export HOSTNAME=$(print -P %m)
 export USERNAME
 export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
 export EXA_COLORS='uu=35'
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 # Load custom configurations
 for config_file ($ZSH/*.zsh(N)) { source $config_file }
