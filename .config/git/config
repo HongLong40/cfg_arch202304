@@ -1,0 +1,7 @@
+[user]
+	email = 37321971+HongLong40@users.noreply.github.com
+	name = HongLong40
+[init]
+	defaultBranch = main
+[push]
+	default = upstream

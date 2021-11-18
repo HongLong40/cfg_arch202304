@@ -22,9 +22,10 @@ export EDITOR=vim
 export PATH="/usr/lib/ccache/bin/:$PATH"
 export HOSTNAME=$(print -P %m)
 export USERNAME
-export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
+export RIPGREP_CONFIG_PATH=$HOME/.config/rg/ripgreprc
 export EXA_COLORS='uu=35'
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export LESSHISTFILE=-
 
 # Load custom configurations
 for config_file ($ZSH/*.zsh(N)) { source $config_file }
