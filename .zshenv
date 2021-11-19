@@ -8,4 +8,5 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 
 export HISTFILE="$ZDOTDIR/.zhistory"    # History filepath
+export XCOMPOSEFILE="$XDG_CONFIG_HOME"/X11/xcompose
 export XINITRC="${XDG_CONFIG_HOME}/X11/xinitrc"

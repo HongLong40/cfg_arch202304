@@ -17,7 +17,7 @@ export MAKEFLAGS="-j13 -l12"
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
 
-export BC_ENV_ARGS=$HOME/.bcrc
+export BC_ENV_ARGS=$HOME/.config/bc/bcrc
 export EDITOR=vim
 export PATH="/usr/lib/ccache/bin/:$PATH"
 export HOSTNAME=$(print -P %m)
