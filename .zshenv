@@ -10,3 +10,12 @@ export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export HISTFILE="$ZDOTDIR/.zhistory"    # History filepath
 export XCOMPOSEFILE="$XDG_CONFIG_HOME"/X11/xcompose
 export XINITRC="${XDG_CONFIG_HOME}/X11/xinitrc"
+
+# Compilation flags
+export MAKEFLAGS="-j13 -l12"
+
+# disable LESSHISTFILE
+export LESSHISTFILE=-
+
+# default editor
+export EDITOR=vim
