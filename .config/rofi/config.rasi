@@ -2,7 +2,6 @@ configuration {
     modi: "run,window,drun,combi";
     combi-modi: "window,drun";
     display-combi: "🗔 ";
-    theme: "current";
     font: "JetBrains Mono NL 12";
     // font: "Cascadia Code PL 12";
     show-icons: true;
@@ -11,3 +10,4 @@ configuration {
     // yoffset: 100;
     terminal: "alacritty";
 }
+@theme "current"
