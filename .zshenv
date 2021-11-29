@@ -12,7 +12,8 @@ export XCOMPOSEFILE="$XDG_CONFIG_HOME"/X11/xcompose
 export XINITRC="${XDG_CONFIG_HOME}/X11/xinitrc"
 
 # Compilation flags
-export MAKEFLAGS="-j13 -l12"
+# lscpu | awk 'BEGIN { l=j=1 } /(Core|Thread)\(s\)/ { l=l*$NF } END { j=l+1; print "-j"j,"-l"l }'
+export MAKEFLAGS="-j$(nproc)"
 
 # disable LESSHISTFILE
 export LESSHISTFILE=-
