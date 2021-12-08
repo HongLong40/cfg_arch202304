@@ -21,3 +21,7 @@ export LESSHISTFILE=-
 # default editor
 export EDITOR=vim
 export VISUAL=vim
+
+# virsh: allow user to run with out sudo
+export VIRSH_DEFAULT_CONNECT_URI="qemu:///system"
+
