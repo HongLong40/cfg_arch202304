@@ -57,6 +57,9 @@ xfce4-power-manager 1> /dev/null 2>&1 &
 # set screen locker
 xss-lock -- betterlockscreen -l &
 
+# start powerline-daemon
+powerline-daemon -q
+
 # start herbstluftwm. The --locked option eliminates flickering while wm starts
 exec herbstluftwm --locked 
 

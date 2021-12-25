@@ -70,7 +70,6 @@ set statusline+=\
 " --- Settings (general) -----------------------------------------------------
 set splitbelow splitright
 set title
-set showmode
 set autoindent
 set number relativenumber
 set showmatch
@@ -97,6 +96,11 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <C-a> ggVG
 
+if !has('gui_running')
+    let g:powerline_loaded = 0
+    set showmode
+endif
+
 if has('gui_running')
     " toolbar and scrollbars
     set guioptions-=T     " remove toolbar
@@ -104,4 +108,5 @@ if has('gui_running')
     set guioptions-=r     " right scroll bar
     set guioptions-=b     " bottom scroll bar
     set guioptions-=h     " only calculate bottom scroll size of current line
+    set noshowmode        " to avoid duplication in powerline status bar
 endif
