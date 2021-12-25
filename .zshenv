@@ -22,6 +22,6 @@ export LESSHISTFILE=-
 export EDITOR=vim
 export VISUAL=vim
 
-# virsh: allow user to run with out sudo
+# virsh: allow user to run without sudo
 export VIRSH_DEFAULT_CONNECT_URI="qemu:///system"
 
