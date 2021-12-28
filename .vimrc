@@ -60,11 +60,11 @@ vnoremap <silent> tu :s/\[✓\]/\[ \]/
 " --- Status Line ------------------------------------------------------------
 set laststatus=2
 set statusline=
-set statusline+=\ %n\ -\ %<%t%h%M
+set statusline+=\ %n\ -\ %<%f%h%M
 set statusline+=%=
 set statusline+=%{&fileencoding?&fileencoding:&encoding}
-set statusline+=:%{&fileformat}
-set statusline+=\ │\ %5.5b\ │\ %04.4B\ │\ %05.5l:%03.3v\ %05.5L
+set statusline+=:%{&fileformat}\ %y
+set statusline+=\ │\ %5.5l:%-3.3v
 set statusline+=\ 
 
 " --- Settings (general) -----------------------------------------------------
