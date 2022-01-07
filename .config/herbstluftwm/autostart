@@ -104,10 +104,11 @@ done
 # default_frame_layout does not apply for this frame
 hc load ${tag_names[1]} '(clients horizontal:0)'
 
-# set default layout for tags "4", "5" and "6" to max
+# set default layout for tags "4", "5", "6" and "9" to max
 hc load ${tag_names[4]} '(clients max:0)'
 hc load ${tag_names[5]} '(clients max:0)'
 hc load ${tag_names[6]} '(clients max:0)'
+hc load ${tag_names[9]} '(clients max:0)'
 
 # cycle through tags
 hc keybind $Mod-period use_index +1 --skip-visible
@@ -202,6 +203,7 @@ hc rule class="Gimp-2.10"           tag=4 switchtag=on
 hc rule class="Inkscape"            tag=4 switchtag=on
 hc rule class=org.remmina.Remmina   tag=9
 hc rule class="VirtualBox Machine"  tag=9 switchtag=on 
+hc rule class="Virt-manager"        tag=9 switchtag=on 
 
 # floating clients
 hc rule class=Galculator    floating=on floatplacement=center
