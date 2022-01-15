@@ -2,7 +2,7 @@
 # 2021-06-13 Edward Smith Moved vcs_info and git aliases to zsh setup files
 # 2021-07-11 Edward Smith Added fortune
 
-export ZSH="/usr/share/zsh/custom"
+#export ZSH="/usr/share/zsh/custom"
 fpath=("$ZSH" "$fpath[@]")
 autoload -Uz compinit promptinit; compinit; promptinit
 
@@ -18,7 +18,7 @@ export BC_ENV_ARGS=$HOME/.config/bc/bcrc
 export PATH="/usr/lib/ccache/bin/:$PATH"
 export HOSTNAME=$(print -P %m)
 export USERNAME
-export RIPGREP_CONFIG_PATH=$HOME/.config/rg/ripgreprc
+#export RIPGREP_CONFIG_PATH=$HOME/.config/rg/ripgreprc
 export EXA_COLORS='uu=35'
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
