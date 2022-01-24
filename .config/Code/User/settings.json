@@ -1,0 +1,22 @@
+{
+    "editor.fontFamily": "JetBrains Mono",
+    "editor.fontLigatures": true,
+    "editor.lineNumbers": "relative",
+    "vim.smartRelativeLine": true,
+    "vim.useSystemClipboard": true,
+    "editor.showFoldingControls": "always",
+    "editor.renderWhitespace": "all",
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter.notebook.ipynb"
+    },
+    "jupyter.interactiveWindowMode": "perFile",
+    "files.autoSave": "afterDelay",
+    "database-client.defaultSelectLimit": 100,
+    "editor.minimap.enabled": false,
+    "editor.fontSize": 16,
+    "editor.cursorBlinking": "solid",
+    "editor.cursorStyle": "underline-thin",
+    "editor.wordWrap": "on",
+    "workbench.editor.enablePreview": false,
+    "workbench.iconTheme": "material-icon-theme"
+}
