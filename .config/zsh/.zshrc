@@ -21,7 +21,10 @@ export EXA_COLORS='uu=35'
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 # Load custom configurations
-for config_file ($ZSH/*.zsh(N)) { source $config_file }
+for config_file in $ZSH/*.zsh(N)
+do
+    source $config_file
+done
 unset config_file
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -52,53 +55,11 @@ bindkey -M viins "$terminfo[kcud1]" history-substring-search-down
 # 5  ⇒  blinking bar, xterm.
 # 6  ⇒  steady bar, xterm.
 
-# bindkey -v
-# export KEYTIMEOUT=5
-
-# Change cursor shape and right-prompt for different vi modes.
-vim_ins_mode="%F{cyan}ins%f"
-vim_cmd_mode="%F{magenta}cmd%f"
-vim_mode=$vim_ins_mode
-
-prompt_end_ins_char="❯"
-prompt_end_cmd_char="ᛞ"
-prompt_end_char=$prompt_end_ins_char
-
-function zle-keymap-select {
-    vim_mode="${${KEYMAP/vicmd/${vim_cmd_mode}}/(main|viins)/${vim_ins_mode}}"
-
-    if [[ ${KEYMAP} == vicmd ]]
-    then
-        # blinking underline cursor
-        prompt_end_char=$prompt_end_cmd_char
-        echo -ne '\e[3 q'
-    else
-        # underline cursor
-        prompt_end_char=$prompt_end_ins_char
-        echo -ne '\e[4 q'
-    fi
-
-    zle reset-prompt
-}
-zle -N zle-keymap-select
-
-function zle-line-finish {
-    vim_mode=$vim_ins_mode
-    prompt_end_char=$prompt_end_ins_char
-}
-zle -N zle-line-finish
-
-#setopt prompt_subst
 prompt edward yellow
-RPROMPT='${vim_mode}'
-
-echo -ne '\e[4 q' # Use underline shape cursor on startup.
+prompt_set_cursor underline
+#echo -ne '\e[4 q' # Use underline shape cursor on startup.
 
 HISTORY_IGNORE="(ls*|ll*|cd*|cls|exit|poweroff|reboot)"
-
-# ad-hoc aliases
-alias cal='cal --week'
-alias hc=herbstclient
 
 # add push-line-or-edit function
 bindkey '^B' push-line-or-edit
