@@ -31,6 +31,7 @@ source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring
 
 # Set keys for searching history - widgets are defined in zsh-history-substring-search.zsh,
 # so need to bind keys after sourcing the file.
+# Arrow Up = "^[OA", Arrow Down = "^[OB"
 bindkey -M vicmd "^[OA" history-substring-search-up
 bindkey -M viins "^[OA" history-substring-search-up
 bindkey -M vicmd "^[OB" history-substring-search-down
@@ -55,7 +56,5 @@ prompt_set_cursor underline
 
 HISTORY_IGNORE="(ls*|ll*|cd*|cls|exit|poweroff|reboot)"
 
-# add push-line-or-edit function
-bindkey '^B' push-line-or-edit
 fortune
 
