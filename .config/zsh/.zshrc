@@ -51,7 +51,7 @@ bindkey -M viins "^[OB" history-substring-search-down
 # 6  ⇒  steady bar, xterm.
 
 prompt edward yellow
-echo -ne '\e[4 q' # Use underline shape cursor on startup.
+echo -ne "\e[${prompt_cursor_mode[viins]} q" # Use underline shape cursor on startup.
 
 HISTORY_IGNORE="(ls*|ll*|cd*|cls|exit|poweroff|reboot)"
 
