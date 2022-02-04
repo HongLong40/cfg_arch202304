@@ -5,6 +5,7 @@
 #export ZSH="/usr/share/zsh/custom"
 fpath=("$ZSH" "$fpath[@]")
 autoload -Uz compinit promptinit; compinit; promptinit
+autoload -Uz check_invoice
 
 # Set language environment if it is not set
 export LANG=${LANG:-en_US.UTF-8}
