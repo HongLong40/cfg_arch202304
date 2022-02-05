@@ -1,8 +1,5 @@
-# 2021-05-29 Edward Smith Updated vcs_info styles
-# 2021-06-13 Edward Smith Moved vcs_info and git aliases to zsh setup files
-# 2021-07-11 Edward Smith Added fortune
+#!/bin/zsh
 
-#export ZSH="/usr/share/zsh/custom"
 fpath=("$ZSH" "$fpath[@]")
 autoload -Uz compinit promptinit; compinit; promptinit
 autoload -Uz check_invoice
@@ -15,7 +12,7 @@ export LS_COLORS='rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;
 export EXA_COLORS='uu=35'
 
 # Set misc. variables
-export BC_ENV_ARGS=$HOME/.config/bc/bcrc
+export BC_ENV_ARGS=${HOME}/.config/bc/bcrc
 export PATH="/usr/lib/ccache/bin/:$PATH"
 export USERNAME
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
@@ -27,8 +24,9 @@ do
 done
 unset config_file
 
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# history search plugin
 source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+HISTORY_IGNORE="(ls*|ll*|cd*|cls|exit|poweroff|reboot)"
 
 # Set keys for searching history - widgets are defined in zsh-history-substring-search.zsh,
 # so need to bind keys after sourcing the file.
@@ -40,6 +38,11 @@ bindkey -M viins "^[OB" history-substring-search-down
 
 # bindkey "^[[1~" beginning-of-line
 # bindkey "^[[4~" end-of-line
+
+# highlighting plugin
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets cursor)
+ZSH_HIGHLIGHT_STYLES[cursor]='fg=226'
 
 # vi mode
 # Set cursor style (DECSCUSR), VT520.
@@ -54,7 +57,9 @@ bindkey -M viins "^[OB" history-substring-search-down
 prompt edward yellow
 echo -ne "\e[${prompt_cursor_mode[viins]} q" # Use underline shape cursor on startup.
 
-HISTORY_IGNORE="(ls*|ll*|cd*|cls|exit|poweroff|reboot)"
-
 fortune
 
+# check if ${ZDOTDIR}/.zcompdump needs to be (re)compiled
+(
+    zcompare ${ZDOTDIR}/.zcompdump
+) &!
