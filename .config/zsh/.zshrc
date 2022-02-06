@@ -2,7 +2,7 @@
 
 fpath=("$ZSH" "$fpath[@]")
 autoload -Uz compinit promptinit; compinit; promptinit
-autoload -Uz check_invoice
+autoload -Uz check_invoice nms
 
 # Set language environment if it is not set
 export LANG=${LANG:-en_US.UTF-8}
@@ -39,13 +39,13 @@ bindkey -M viins "^[OB" history-substring-search-down
 # bindkey "^[[1~" beginning-of-line
 # bindkey "^[[4~" end-of-line
 
-# highlighting plugin
+# highlighting plugin -- must be sourced last
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets cursor)
 ZSH_HIGHLIGHT_STYLES[cursor]='fg=226'
 
-# vi mode
-# Set cursor style (DECSCUSR), VT520.
+# Set cursor style (DECSCUSR), VT520: echo -ne "\e[_mode_ q"
+# _mode_ is one of:
 # 0  ⇒  blinking block.
 # 1  ⇒  blinking block (default).
 # 2  ⇒  steady block.
@@ -54,10 +54,9 @@ ZSH_HIGHLIGHT_STYLES[cursor]='fg=226'
 # 5  ⇒  blinking bar, xterm.
 # 6  ⇒  steady bar, xterm.
 
+# set prompt and cursor.
 prompt edward yellow
 echo -ne "\e[${prompt_cursor_mode[viins]} q" # Use underline shape cursor on startup.
-
-fortune
 
 # check if ${ZDOTDIR}/.zcompdump needs to be (re)compiled
 (
