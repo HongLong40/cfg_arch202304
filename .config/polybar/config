@@ -86,7 +86,7 @@ format-offset     =
     format-charging-font = 2
     #format-charging-underline = #00ff00
 
-    label-discharging = %{F#FF0000}  %{F-}  %percentage%% (%time%)
+    label-discharging = %{F#FF0000}%{F-}  %percentage%% (%time%)
     format-discharging-padding = 1
     format-discharging-margin = 1
     format-discharging-font = 2
