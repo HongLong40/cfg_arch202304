@@ -18,5 +18,17 @@
     "editor.cursorStyle": "underline-thin",
     "editor.wordWrap": "on",
     "workbench.editor.enablePreview": false,
-    "workbench.iconTheme": "material-icon-theme"
+    "workbench.iconTheme": "material-icon-theme",
+    "gitlens.currentLine.enabled": false,
+    "editor.bracketPairColorization.enabled": true,
+    "workbench.colorCustomizations": {
+      "editorLineNumber.foreground": "#808080",
+      "editorLineNumber.activeForeground": "#C4A000",
+      "editorBracketHighlight.foreground1": "#458588",
+      "editorBracketHighlight.foreground2": "#B16286",
+      "editorBracketHighlight.foreground3": "#CC241D",
+      "editorBracketHighlight.foreground4": "#D65D0E",
+      "editorBracketHighlight.foreground5": "#458588",
+      "editorBracketHighlight.foreground6": "#B16286",
+    }
 }

@@ -179,7 +179,7 @@ format-offset     =
     interval = 3
 
     ;label = MEM %percentage_used%% = %mb_used% | %gb_free% | %gb_total%
-    label = μ %percentage_used%% = %mb_used%
+    label = ɱ  %percentage_used%% = %mb_used%
     format-padding = 1
     format-margin = 1
     format-font = 2
