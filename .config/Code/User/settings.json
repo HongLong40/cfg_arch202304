@@ -13,7 +13,6 @@
     "files.autoSave": "afterDelay",
     "database-client.defaultSelectLimit": 100,
     "editor.minimap.enabled": false,
-    "editor.fontSize": 16,
     "editor.cursorBlinking": "solid",
     "editor.cursorStyle": "underline-thin",
     "editor.wordWrap": "on",
@@ -30,5 +29,9 @@
       "editorBracketHighlight.foreground4": "#D65D0E",
       "editorBracketHighlight.foreground5": "#458588",
       "editorBracketHighlight.foreground6": "#B16286",
-    }
+    },
+    "editor.fontSize": 16,
+    "settingsSync.ignoredSettings": [
+      "editor.fontSize"
+    ]
 }
