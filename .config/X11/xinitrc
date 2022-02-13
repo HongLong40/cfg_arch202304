@@ -60,9 +60,6 @@ xss-lock -- betterlockscreen -l &
 # start powerline-daemon (only needed if running powerline prompt in shell)
 # powerline-daemon -q
 
-# start gnome-keyring-daemon
-eval $(gnome-keyring-daemon --start)
-
 # start herbstluftwm. The --locked option eliminates flickering while wm starts
 exec herbstluftwm --locked 
 

@@ -35,3 +35,8 @@ export HOSTNAME=$(</etc/hostname)
 # virsh: allow user to run without sudo
 export VIRSH_DEFAULT_CONNECT_URI="qemu:///system"
 
+# start gnome-keyring-daemon
+if [ -n "$DESKTOP_SESSION" ];then
+    eval $(gnome-keyring-daemon --start)
+    export SSH_AUTH_SOCK
+fi
