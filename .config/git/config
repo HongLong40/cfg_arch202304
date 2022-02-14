@@ -8,6 +8,7 @@
 [core]
 	autocrlf = input
 	editor = code --wait
+	pager = bat
 [diff]
 	tool = vscode
 [difftool "vscode"]
