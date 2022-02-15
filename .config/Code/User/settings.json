@@ -30,8 +30,11 @@
       "editorBracketHighlight.foreground5": "#458588",
       "editorBracketHighlight.foreground6": "#B16286",
     },
-    "editor.fontSize": 16,
     "settingsSync.ignoredSettings": [
       "editor.fontSize"
+    ],
+    "editor.fontSize": 16,
+    "settingsSync.ignoredExtensions": [
+      "ms-vscode-remote.remote-wsl"
     ]
 }
