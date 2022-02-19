@@ -96,10 +96,10 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <C-a> ggVG
 
-if !has('gui_running')
-    let g:powerline_loaded = 0
-    set showmode
-endif
+"if !has('gui_running')
+"    let g:powerline_loaded = 0
+"    set showmode
+"endif
 
 if has('gui_running')
     " toolbar and scrollbars
@@ -110,3 +110,5 @@ if has('gui_running')
     set guioptions-=h     " only calculate bottom scroll size of current line
     set noshowmode        " to avoid duplication in powerline status bar
 endif
+
+set noshowmode
