@@ -13,7 +13,7 @@ chosen=$(echo ${_sinks} | awk '{ print $1,$2,$7 }' | \
     -xoffset -6 \
     -yoffset 30 \
     -p "🎜 🎚 Select Sink" \
-    -theme-str "entry {enabled: false;} window {width: 25%; location: north east;} listview {lines: ${_lines};}" )
+    -theme-str "entry {enabled: false;} window {width: 37%; location: north east;} listview {lines: ${_lines};}" )
 
 typeset -A sink
 sink=( $( echo $chosen | awk '{ print "id",$1,"nm",$2 }' ) )
