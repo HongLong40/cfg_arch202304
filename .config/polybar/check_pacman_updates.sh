@@ -62,7 +62,7 @@ check_update() {
     if [[ ($last_update_count -ne $curr_update_count) ]]
     then
         last_update_count=$curr_update_count
-        polybar-msg hook ${pbc[hook_name]} ${pbc[hook_id]} || true
+        polybar-msg action "#${pbc[hook_name]}.hook.${pbc[hook_id]}" || true
         if [[ $curr_update_count -ne 0 ]]; then
             notify-send -t 5000 "$curr_update_count Pacman Update(s) Available"
         fi

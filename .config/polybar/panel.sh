@@ -50,6 +50,6 @@ then
     "$HOME/.config/polybar/check_pacman_updates.sh" &
 else
     sleep 10 # wait for polybar to be ready to receive messages
-    polybar-msg hook pacman_updates 2
+    polybar-msg action "#pacman_updates.hook.1"
 fi
 

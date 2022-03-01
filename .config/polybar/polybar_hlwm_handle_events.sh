@@ -31,13 +31,15 @@ herbstclient --idle | {
     do
         if [[ ${event[1]} == "attribute_changed" ]]
         then
-            polybar-msg hook hlwm_layout 1 1> /dev/null  2>&1
+            polybar-msg action "#hlwm_layout.hook.0" 1> /dev/null  2>&1
+            # polybar-msg hook hlwm_layout 1 1> /dev/null  2>&1
             sleep 0.1 # temp. fix to ensure next msg is processed by polybar
         fi
 
         if [[ ${event[1]} =~ "tag_" ]]
         then
-            polybar-msg hook hlwm_workspaces 1 1> /dev/null  2>&1
+            polybar-msg action "#hlwm_workspaces.hook.0" 1> /dev/null  2>&1
+            #polybar-msg hook hlwm_workspaces 1 1> /dev/null  2>&1
             sleep 0.1 # temp. fix to ensure next msg is processed by polybar
         fi
     done
