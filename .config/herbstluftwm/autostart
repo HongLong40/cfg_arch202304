@@ -34,8 +34,8 @@ hc keybind $Mod-Return  spawn alacritty
 hc keybind $Mod-space   spawn rofi -show combi
 hc keybind $Mod-p       spawn rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 
-hc keybind $Mod-b       chain : lock : use_index 4 : spawn brave : unlock             # browser → tag 5
-hc keybind $Mod-Shift-b chain : lock : use_index 5 : spawn brave --incognito : unlock # browser (private) → tag 6
+hc keybind $Mod-b       chain : lock : use_index 4 : spawn vivaldi-stable : unlock             # browser → tag 5
+hc keybind $Mod-Shift-b chain : lock : use_index 5 : spawn vivaldi-stable --incognito : unlock # browser (private) → tag 6
 
 hc keybind Print          spawn flameshot gui  # screen capture
 hc keybind XF86Calculator spawn galculator     # calculator
