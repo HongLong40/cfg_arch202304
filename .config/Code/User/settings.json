@@ -36,5 +36,19 @@
     "editor.fontSize": 16,
     "settingsSync.ignoredExtensions": [
       "ms-vscode-remote.remote-wsl"
-    ]
+    ],
+    "mssql.connections": [
+      {
+        "server": "SQL2017-DEV",
+        "database": "",
+        "authenticationType": "Integrated",
+        "password": ""
+      }
+    ],
+    "gitlens.advanced.messages": {
+      "suppressRebaseSwitchToTextWarning": true
+    },
+    "powershell.powerShellDefaultVersion": "Windows PowerShell (x64)",
+    "terminal.integrated.enablePersistentSessions": false,
+    "terminal.integrated.persistentSessionReviveProcess": "never"
 }
