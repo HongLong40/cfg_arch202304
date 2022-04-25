@@ -50,5 +50,7 @@
     },
     "powershell.powerShellDefaultVersion": "Windows PowerShell (x64)",
     "terminal.integrated.enablePersistentSessions": false,
-    "terminal.integrated.persistentSessionReviveProcess": "never"
+    "terminal.integrated.persistentSessionReviveProcess": "never",
+    "terminal.integrated.defaultProfile.windows": "PowerShell",
+    "editor.fontWeight": "normal"
 }
