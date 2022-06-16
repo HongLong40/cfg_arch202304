@@ -6,9 +6,6 @@
     "vim.useSystemClipboard": true,
     "editor.showFoldingControls": "always",
     "editor.renderWhitespace": "all",
-    "workbench.editorAssociations": {
-        "*.ipynb": "jupyter.notebook.ipynb"
-    },
     "jupyter.interactiveWindowMode": "perFile",
     "files.autoSave": "afterDelay",
     "database-client.defaultSelectLimit": 100,
@@ -48,9 +45,13 @@
     "gitlens.advanced.messages": {
       "suppressRebaseSwitchToTextWarning": true
     },
-    "powershell.powerShellDefaultVersion": "Windows PowerShell (x64)",
+    "powershell.powerShellDefaultVersion": "PowerShell 7.2",
     "terminal.integrated.enablePersistentSessions": false,
     "terminal.integrated.persistentSessionReviveProcess": "never",
-    "terminal.integrated.defaultProfile.windows": "PowerShell",
-    "editor.fontWeight": "normal"
+    "editor.fontWeight": "normal",
+    "debug.javascript.debugByLinkOptions": "on",
+    "powershell.integratedConsole.showOnStartup": false,
+    "powershell.powerShellAdditionalExePaths": {
+      "PowerShell 7.2": "C:\\Program Files\\PowerShell\\7\\pwsh.exe"
+    }
 }

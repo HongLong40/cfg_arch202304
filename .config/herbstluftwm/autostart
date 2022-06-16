@@ -12,7 +12,7 @@ xsetroot -solid '#19202A'
 
 if hc silent new_attr bool my_not_first_autostart
 then
-    synology-cloud-station-drive autostart &
+    synology-drive &
 fi
 
 # remove all existing keybindings
