@@ -37,8 +37,9 @@
     "mssql.connections": [
       {
         "server": "SQL2017-DEV",
-        "database": "",
+        "database": "Orbit_FS_Edward",
         "authenticationType": "Integrated",
+        "profileName": "Orbit_FS_Edward",
         "password": ""
       }
     ],

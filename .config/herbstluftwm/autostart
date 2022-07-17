@@ -49,6 +49,7 @@ hc keybind XF86AudioRaiseVolume spawn pactl set-sink-volume @DEFAULT_SINK@ +1%
 hc keybind XF86AudioLowerVolume spawn pactl set-sink-volume @DEFAULT_SINK@ -1%
 hc keybind XF86AudioPlay        spawn playerctl play-pause
 
+
 # basic movement in tiling and floating mode
 # focusing clients
 hc keybind $Mod-Left  focus left
@@ -146,6 +147,9 @@ hc keybind $Mod-Shift-Tab   cycle_all -1
 hc keybind $Mod-c cycle
 hc keybind $Mod-i jumpto urgent
 
+# toggle tabs
+hc keybind $Mod-t set tabbed_max toggle
+
 # theme
 hc attr theme.tiling.reset 1
 hc attr theme.floating.reset 1
@@ -170,6 +174,12 @@ hc attr theme.border_width 3
 hc attr theme.inner_width 1
 hc attr theme.outer_width 1
 hc attr theme.floating.border_width 6
+
+# tabs (for max layout)
+hc attr theme.title_when multiple_tabs
+hc attr theme.title_height 12
+hc attr theme.title_font Roboto:size=10:italic
+hc attr theme.title_depth 4
 
 # colors
 hc attr theme.inner_color        '#202020'
