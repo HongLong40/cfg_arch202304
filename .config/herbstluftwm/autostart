@@ -4,8 +4,6 @@
 
 hc() { herbstclient "$@" }
 
-run() { if ! pgrep -f $1 ; then $@&; fi }
-
 hc emit_hook reload
 
 xsetroot -solid '#19202A'
@@ -41,8 +39,7 @@ hc keybind Print          spawn flameshot gui  # screen capture
 hc keybind XF86Calculator spawn galculator     # calculator
 
 # Volume Control
-hc keybind $Mod-Control-v spawn pavucontrol
-hc keybind $Mod-Shift-v   spawn $HOME/.config/utils/switchaudio
+hc keybind $Mod-semicolon spawn $HOME/.config/utils/switchaudio
 
 hc keybind XF86AudioMute        spawn pactl set-sink-mute @DEFAULT_SINK@ toggle
 hc keybind XF86AudioRaiseVolume spawn pactl set-sink-volume @DEFAULT_SINK@ +1%
