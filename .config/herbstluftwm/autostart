@@ -146,6 +146,7 @@ hc keybind $Mod-i jumpto urgent
 
 # toggle tabs
 hc keybind $Mod-t set tabbed_max toggle
+hc set tabbed_max off
 
 # theme
 hc attr theme.tiling.reset 1
@@ -161,7 +162,9 @@ hc set frame_transparent_width 4
 hc set always_show_frame on
 hc set frame_bg_transparent on
 
-hc set frame_border_active_color '#AA00AA'
+ACTIVE_COLOR='#5E81AC'
+#hc set frame_border_active_color '#AA00AA'
+hc set frame_border_active_color $ACTIVE_COLOR
 hc set frame_bg_active_color     '#555555'
 hc set frame_border_normal_color '#101010'
 hc set frame_bg_normal_color     '#004000'
@@ -183,10 +186,10 @@ hc attr theme.inner_color        '#202020'
 hc attr theme.active.inner_color '#3E4A00'
 
 hc attr theme.outer_color        '#454545'
-hc attr theme.active.outer_color '#AA00AA'
+hc attr theme.active.outer_color $ACTIVE_COLOR
 
 hc attr theme.color              '#454545'
-hc attr theme.active.color       '#AA00AA'
+hc attr theme.active.color       $ACTIVE_COLOR
 hc attr theme.urgent.color       orange
 
 hc attr theme.floating.active.color       '#006500'

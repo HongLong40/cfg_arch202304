@@ -66,4 +66,4 @@ export SSH_AUTH_SOCK
 
 # start herbstluftwm. The --locked option eliminates flickering while wm starts
 exec herbstluftwm --locked 
-
+#exec dbus-launch leftwm
