@@ -207,13 +207,12 @@ hc rule focus=on # normally focus new clients
 hc rule floatplacement=smart
 
 # Clients with fixed tags
-hc rule class=Code                  tag=3 switchtag=on
-hc rule class=Clementine            tag=8
-hc rule class="Gimp-2.10"           tag=4 switchtag=on
-hc rule class="Inkscape"            tag=4 switchtag=on
-hc rule class=org.remmina.Remmina   tag=9
-hc rule class="VirtualBox Machine"  tag=9 switchtag=on 
-hc rule class="Virt-manager"        tag=9 switchtag=on 
+hc rule class=Code                tag=3 switchtag=on
+hc rule class=Clementine          tag=8
+hc rule class~"Gimp.*"            tag=4 switchtag=on
+hc rule class="Inkscape"          tag=4 switchtag=on
+hc rule class=org.remmina.Remmina tag=9
+hc rule class="Virt-manager"      tag=9 switchtag=on 
 
 # floating clients
 hc rule class=Galculator    floating=on floatplacement=center
