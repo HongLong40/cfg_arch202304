@@ -64,7 +64,7 @@ hc keybind $Mod-Shift-Right  shift right
 # create and focus an empty frame at the specified direction
 hc keybind $Mod-u          chain : split bottom 0.5  : focus down
 hc keybind $Mod-o          chain : split right  0.5  : focus right
-hc keybind $Mod-Control-o  chain : split right  0.66 : focus right
+hc keybind $Mod-Control-o  chain : split right  0.66 : focus right : set_layout vertical
 
 # let the current frame explode into subframes
 hc keybind $Mod-Control-space split explode
