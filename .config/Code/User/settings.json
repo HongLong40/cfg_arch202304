@@ -54,5 +54,6 @@
     "powershell.integratedConsole.showOnStartup": false,
     "powershell.powerShellAdditionalExePaths": {
       "PowerShell 7.2": "C:\\Program Files\\PowerShell\\7\\pwsh.exe"
-    }
+    },
+    "workbench.startupEditor": "none"
 }
