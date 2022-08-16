@@ -196,8 +196,8 @@ hc attr theme.floating.active.color       '#006500'
 hc attr theme.floating.active.outer_color '#006500'
 
 hc set window_gap 1
-hc set smart_window_surroundings off
-hc set smart_frame_surroundings on
+hc cycle_value smart_window_surroundings off
+hc cycle_value smart_frame_surroundings on
 hc set mouse_recenter_gap 0
 
 # rules
