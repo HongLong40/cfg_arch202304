@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/bin/zsh
 
 # config for herbstluftwm
 
@@ -32,6 +32,8 @@ hc keybind $Mod-Return  spawn alacritty
 hc keybind $Mod-space   spawn rofi -show combi
 hc keybind $Mod-p       spawn rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 
+hc keybind $Mod-e       spawn thunar
+
 hc keybind $Mod-b       chain : lock : use_index 4 : spawn vivaldi-stable : unlock             # browser → tag 5
 hc keybind $Mod-Shift-b chain : lock : use_index 5 : spawn vivaldi-stable --incognito : unlock # browser (private) → tag 6
 
@@ -47,18 +49,14 @@ hc keybind XF86AudioLowerVolume spawn pactl set-sink-volume @DEFAULT_SINK@ -1%
 hc keybind XF86AudioPlay        spawn playerctl play-pause
 
 
-# basic movement in tiling and floating mode
-# focusing clients
-hc keybind $Mod-Left  focus left
-hc keybind $Mod-Down  focus down
-hc keybind $Mod-Up    focus up
-hc keybind $Mod-Right focus right
-
-# moving clients
-hc keybind $Mod-Shift-Left   shift left
-hc keybind $Mod-Shift-Down   shift down
-hc keybind $Mod-Shift-Up     shift up
-hc keybind $Mod-Shift-Right  shift right
+# basic movement and resizing in tiling and floating mode
+resizestep=0.02
+for dir_key in left right up down
+do
+    hc keybind $Mod-${(C)dir_key}          focus  $dir_key
+    hc keybind $Mod-Shift-${(C)dir_key}    shift  $dir_key
+    hc keybind $Mod-Control-${(C)dir_key}  resize $dir_key +$resizestep
+done
 
 # splitting frames
 # create and focus an empty frame at the specified direction
@@ -68,13 +66,6 @@ hc keybind $Mod-Control-o  chain : split right  0.66 : focus --level=frame right
 
 # let the current frame explode into subframes
 hc keybind $Mod-Control-space split explode
-
-# resizing frames and floating clients
-resizestep=0.02
-hc keybind $Mod-Control-Left   resize left  +$resizestep
-hc keybind $Mod-Control-Down   resize down  +$resizestep
-hc keybind $Mod-Control-Up     resize up    +$resizestep
-hc keybind $Mod-Control-Right  resize right +$resizestep
 
 # focus or move to monitor
 hc keybind $Mod-BackSpace       cycle_monitor
@@ -87,7 +78,7 @@ hc set default_frame_layout horizontal
 tag_names=( {1..9} )
 typeset -i ws_index=0 # use this to set workspace indices, as zsh arrays are 1-based
 
-hc rename default ${tag_names[1]} 2>/dev/null  || true
+hc rename default ${tag_names[1]} 2>/dev/null || true
 for (( i = 1; i <= $#tag_names; i++ ))
 do
     hc add ${tag_names[$i]}
@@ -103,10 +94,10 @@ done
 hc load ${tag_names[1]} '(clients horizontal:0)'
 
 # set default layout for tags "4", "5", "6" and "9" to max
-hc load ${tag_names[4]} '(clients max:0)'
-hc load ${tag_names[5]} '(clients max:0)'
-hc load ${tag_names[6]} '(clients max:0)'
-hc load ${tag_names[9]} '(clients max:0)'
+for tag in 4 5 6 9
+do
+    hc load ${tag_names[$tag]} '(clients max:0)'
+done
 
 # cycle through tags
 hc keybind $Mod-period use_index +1 --skip-visible
