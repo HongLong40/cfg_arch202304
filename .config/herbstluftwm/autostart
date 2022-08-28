@@ -229,16 +229,35 @@ hc watch tags.focus.tiling.focused_frame.algorithm
 # unlock, just to be sure
 hc unlock
 
-# do multi monitor setup here, e.g.:
-# hc set_monitors 1920x1080+0+0 1920x1080+1920+0
-# or simply:
+# multi monitor setup
+# run hc detect_monitors to ensure that the original geometry is reset
+# otherwise the padding on the primary monitor will "stack" when doing hc reload
 hc detect_monitors
+
+typeset -a monitor_list
+typeset -a rect
+
+for m in $(hc list_monitors | cut -d: -f1)
+do
+    rect=( $(hc monitor_rect $m) )
+
+    if [[ $m -eq "0" ]]
+    then
+        rect[2]=25
+        rect[4]=$(( ${rect[4]} - 25 ))
+    fi
+
+    monitor_list+="${rect[3]}x${rect[4]}+${rect[1]}+${rect[2]}"
+done
+
+hc set_monitors $monitor_list
 
 # start polybar panel and related scripts. Also starts dunst if it is not already running
 ~/.config/polybar/panel.sh &
 
-# set focus to first monitor and position mouse top right
+# set focus to first monitor and position mouse top right (offset: 30px)
 hc focus_monitor 0
-xpos=$(hc list_monitors | awk -F "x" '/0:/ { split($1,b," "); print b[2]-30 }')
+xpos=$(( $(hc monitor_rect 0 | cut -d" " -f3) - 30 ))
+#xpos=$(hc list_monitors | awk -F "x" '/0:/ { split($1,b," "); print b[2]-30 }')
 xte "mousemove $xpos 30"
 

@@ -1,1 +1,1 @@
-display_hdmi.sh
+display_one.sh
