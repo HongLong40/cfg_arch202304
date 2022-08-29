@@ -64,6 +64,9 @@ xss-lock -- betterlockscreen -l &
 eval $(gnome-keyring-daemon --start)
 export SSH_AUTH_SOCK
 
+# start synology-drive
+synology-drive &
+
 # start herbstluftwm. The --locked option eliminates flickering while wm starts
 exec herbstluftwm --locked 
 #exec dbus-launch leftwm

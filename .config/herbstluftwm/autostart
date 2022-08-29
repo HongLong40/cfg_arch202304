@@ -2,16 +2,21 @@
 
 # config for herbstluftwm
 
-hc() { herbstclient "$@" }
+typeset -a cmds=()
+
+#hc() { herbstclient "$@" }
+function hc {
+    cmds+=("X" "$@")
+}
 
 hc emit_hook reload
 
 xsetroot -solid '#19202A'
 
-if hc silent new_attr bool my_not_first_autostart
-then
-    synology-drive &
-fi
+#if herbstclient silent new_attr bool my_not_first_autostart
+#then
+#    synology-drive &
+#fi
 
 # remove all existing keybindings
 hc keyunbind --all
@@ -47,7 +52,6 @@ hc keybind XF86AudioMute        spawn pactl set-sink-mute @DEFAULT_SINK@ toggle
 hc keybind XF86AudioRaiseVolume spawn pactl set-sink-volume @DEFAULT_SINK@ +1%
 hc keybind XF86AudioLowerVolume spawn pactl set-sink-volume @DEFAULT_SINK@ -1%
 hc keybind XF86AudioPlay        spawn playerctl play-pause
-
 
 # basic movement and resizing in tiling and floating mode
 resizestep=0.02
@@ -118,9 +122,9 @@ hc keybind $Mod-v set_layout vertical
 # The following cycles through the available layouts within a frame, but skips
 # layouts, if the layout change wouldn't affect the actual window positions.
 # I.e. if there are two windows within a frame, the grid layout is skipped.
-hc keybind $Mod-l                                                           \
-            or , and . compare tags.focus.curframe_wcount = 2                   \
-                     . cycle_layout +1 vertical horizontal max vertical grid    \
+hc keybind $Mod-l                                               \
+            or , and . compare tags.focus.curframe_wcount = 2   \
+                     . cycle_layout +1 vertical horizontal max  \
                , cycle_layout +1
 
 # mouse
@@ -226,20 +230,17 @@ hc set swap_monitors_to_get_tag 1
 # set watch to trap layout changes for display in Polybar
 hc watch tags.focus.tiling.focused_frame.algorithm
 
-# unlock, just to be sure
-hc unlock
-
 # multi monitor setup
 # run hc detect_monitors to ensure that the original geometry is reset
 # otherwise the padding on the primary monitor will "stack" when doing hc reload
-hc detect_monitors
+herbstclient detect_monitors
 
 typeset -a monitor_list
 typeset -a rect
 
-for m in $(hc list_monitors | cut -d: -f1)
+for m in $(herbstclient list_monitors | cut -d: -f1)
 do
-    rect=( $(hc monitor_rect $m) )
+    rect=( $(herbstclient monitor_rect $m) )
 
     if [[ $m -eq "0" ]]
     then
@@ -252,12 +253,19 @@ done
 
 hc set_monitors $monitor_list
 
+# unlock, just to be sure
+hc unlock
+
+echo ${cmds} > $HOME/.config/herbstluftwm/cmds
+
+herbstclient chain ${cmds}
+
 # start polybar panel and related scripts. Also starts dunst if it is not already running
 ~/.config/polybar/panel.sh &
 
 # set focus to first monitor and position mouse top right (offset: 30px)
-hc focus_monitor 0
-xpos=$(( $(hc monitor_rect 0 | cut -d" " -f3) - 30 ))
+herbstclient focus_monitor 0
+xpos=$(( $(herbstclient monitor_rect 0 | cut -d" " -f3) - 30 ))
 #xpos=$(hc list_monitors | awk -F "x" '/0:/ { split($1,b," "); print b[2]-30 }')
 xte "mousemove $xpos 30"
 
