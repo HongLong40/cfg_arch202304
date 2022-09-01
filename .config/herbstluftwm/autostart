@@ -4,19 +4,11 @@
 
 typeset -a cmds=()
 
-#hc() { herbstclient "$@" }
-function hc {
-    cmds+=("X" "$@")
-}
+function hc() { cmds+=("X" "$@") }
 
 hc emit_hook reload
 
 xsetroot -solid '#19202A'
-
-#if herbstclient silent new_attr bool my_not_first_autostart
-#then
-#    synology-drive &
-#fi
 
 # remove all existing keybindings
 hc keyunbind --all
@@ -46,7 +38,7 @@ hc keybind Print          spawn flameshot gui  # screen capture
 hc keybind XF86Calculator spawn galculator     # calculator
 
 # Volume Control
-hc keybind $Mod-semicolon spawn $HOME/.config/utils/switchaudio
+hc keybind $Mod-equal           spawn $HOME/.config/utils/switchaudio
 
 hc keybind XF86AudioMute        spawn pactl set-sink-mute @DEFAULT_SINK@ toggle
 hc keybind XF86AudioRaiseVolume spawn pactl set-sink-volume @DEFAULT_SINK@ +1%
@@ -103,10 +95,6 @@ do
     hc load ${tag_names[$tag]} '(clients max:0)'
 done
 
-# cycle through tags
-hc keybind $Mod-period use_index +1 --skip-visible
-hc keybind $Mod-comma  use_index -1 --skip-visible
-
 # layout
 hc keybind $Mod-r       remove
 hc keybind $Mod-s       floating   toggle
@@ -118,14 +106,6 @@ hc keybind $Mod-g set_layout grid
 hc keybind $Mod-h set_layout horizontal
 hc keybind $Mod-m set_layout max
 hc keybind $Mod-v set_layout vertical
-
-# The following cycles through the available layouts within a frame, but skips
-# layouts, if the layout change wouldn't affect the actual window positions.
-# I.e. if there are two windows within a frame, the grid layout is skipped.
-hc keybind $Mod-l                                               \
-            or , and . compare tags.focus.curframe_wcount = 2   \
-                     . cycle_layout +1 vertical horizontal max  \
-               , cycle_layout +1
 
 # mouse
 hc mouseunbind --all
