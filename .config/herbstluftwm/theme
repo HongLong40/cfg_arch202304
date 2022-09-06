@@ -16,10 +16,10 @@ hc attr theme.background_color '#141414'
 # frame
 hc set frame_padding 0
 hc set frame_gap 6
-hc set frame_border_width 1
+hc set frame_border_width 0
 hc set frame_transparent_width 4
 
-hc set show_frame_decorations focused_if_multiple
+hc set show_frame_decorations none
 hc set frame_bg_transparent on
 
 ACTIVE_COLOR='#5E81AC'
