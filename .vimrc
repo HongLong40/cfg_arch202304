@@ -108,7 +108,6 @@ if has('gui_running')
     set guioptions-=r     " right scroll bar
     set guioptions-=b     " bottom scroll bar
     set guioptions-=h     " only calculate bottom scroll size of current line
-    set noshowmode        " to avoid duplication in powerline status bar
 endif
 
 set noshowmode
