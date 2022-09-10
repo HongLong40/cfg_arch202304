@@ -32,6 +32,7 @@ hc rule class=matplotlib    floating=on floatplacement=smart
 hc rule class=Matplotlib    floating=on floatplacement=smart
 hc rule class=mpv           floating=on floatplacement=center
 hc rule class=Seahorse      floating=on floatplacement=center
+hc rule class=Xfce4-power-manager-settings      floating=on floatplacement=center
 
 hc rule windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)' floating=on floatplacement=center
 hc rule windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on
