@@ -59,6 +59,4 @@ prompt edward yellow
 echo -ne "\e[${prompt_cursor_mode[viins]} q" # Use underline shape cursor on startup.
 
 # check if ${ZDOTDIR}/.zcompdump needs to be (re)compiled
-(
-    zcompare ${ZDOTDIR}/.zcompdump
-) &!
+zcompare ${ZDOTDIR}/.zcompdump &!
