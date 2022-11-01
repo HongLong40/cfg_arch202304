@@ -4,6 +4,7 @@
 
 typeset -a cmds=()
 
+# define hc function, so that this script can be called independently of autostart
 function hc() { cmds+=("X" "$@") }
 
 hc lock
