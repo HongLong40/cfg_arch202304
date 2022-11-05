@@ -6,12 +6,11 @@ typeset PIDFILE="/tmp/check_pacman_updates.pid"
 # check if script is already running
 if [[ -f $PIDFILE ]]
 then
-    pid=$(<${PIDFILE})
-
-    if kill -0 $pid
+    if pgrep -F $PIDFILE > /dev/null
     then
+        pid=$(<${PIDFILE})
         echo "[$(date)] : $PROGNAME: Process is already running with PID $pid"
-        exit 1
+        return 1
     fi
 fi
 

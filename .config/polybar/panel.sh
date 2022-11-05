@@ -3,20 +3,15 @@
 typeset SEMAPHORE="/tmp/polybar_started"
 
 check_ok_to_start () {
-    local pid=
-
     if [[ -f "$1" ]]
     then
-        pid=$(<$1)
-
-        if kill -0 $pid 2> /dev/null; then return 1; fi
+        if pgrep -F $1 > /dev/null; then return 1; fi
     fi
 
     return 0
 }
 
 
-#if [[ -z $(pgrep -x polybar) ]]
 if $(check_ok_to_start /tmp/polybar.pid)
 then
     m=$(polybar --list-monitors | awk -F ":" '/primary/ { print $1 }')
