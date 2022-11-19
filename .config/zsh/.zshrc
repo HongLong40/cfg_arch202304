@@ -58,5 +58,8 @@ ZSH_HIGHLIGHT_STYLES[cursor]='fg=226'
 prompt edward yellow
 echo -ne "\e[${prompt_cursor_mode[viins]} q" # Use underline shape cursor on startup.
 
+# load autojump
+source /usr/share/autojump/autojump.zsh
+
 # check if ${ZDOTDIR}/.zcompdump needs to be (re)compiled
 zcompare ${ZDOTDIR}/.zcompdump &!
