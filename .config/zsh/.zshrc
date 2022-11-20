@@ -11,6 +11,9 @@ export LANG=${LANG:-en_US.UTF-8}
 export LS_COLORS='rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=1;35:st=37;44:ex=01;32:'
 export EXA_COLORS='uu=35'
 
+# Load completions - must be loaded before other custom configurations
+source ${ZSH}/completion.zsh
+
 # Set misc. variables
 export BC_ENV_ARGS=${HOME}/.config/bc/bcrc
 export PATH="/usr/lib/ccache/bin/:$PATH"
@@ -18,22 +21,21 @@ export USERNAME
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 # Load custom configurations
-for config_file in $ZSH/*.zsh(N)
-do
-    source $config_file
-done
-unset config_file
+source ${ZSH}/xdg_vars.zsh
+
+source ${ZSH}/aliases.zsh
+source ${ZSH}/directories.zsh
+source ${ZSH}/history.zsh
+source ${ZSH}/functions.zsh
+source ${ZSH}/termsupport.zsh
 
 # history search plugin
 source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 HISTORY_IGNORE="(ls*|ll*|cd*|cls|exit|poweroff|reboot)"
 
-# Set keys for searching history - widgets are defined in zsh-history-substring-search.zsh,
+# Keys for searching history-widgets are defined in zsh-history-substring-search.zsh,
 # so need to bind keys after sourcing the file.
-bindkey -M vicmd "^[[A" history-substring-search-up
-bindkey -M viins "^[[A" history-substring-search-up
-bindkey -M vicmd "^[[B" history-substring-search-down
-bindkey -M viins "^[[B" history-substring-search-down
+source ${ZSH}/key-bindings.zsh
 
 # set prompt and cursor.
 prompt edward yellow
