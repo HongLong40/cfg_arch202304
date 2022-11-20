@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 fpath=("$ZSH" "$fpath[@]")
-autoload -Uz compinit promptinit; compinit; promptinit
+autoload -Uz promptinit; promptinit
 autoload -Uz check_invoice nms
 
 # Set language environment if it is not set
@@ -30,29 +30,10 @@ HISTORY_IGNORE="(ls*|ll*|cd*|cls|exit|poweroff|reboot)"
 
 # Set keys for searching history - widgets are defined in zsh-history-substring-search.zsh,
 # so need to bind keys after sourcing the file.
-# Arrow Up = "^[OA", Arrow Down = "^[OB"
-bindkey -M vicmd "^[OA" history-substring-search-up
-bindkey -M viins "^[OA" history-substring-search-up
-bindkey -M vicmd "^[OB" history-substring-search-down
-bindkey -M viins "^[OB" history-substring-search-down
-
-# bindkey "^[[1~" beginning-of-line
-# bindkey "^[[4~" end-of-line
-
-# highlighting plugin -- must be sourced last
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets cursor)
-ZSH_HIGHLIGHT_STYLES[cursor]='fg=226'
-
-# Set cursor style (DECSCUSR), VT520: echo -ne "\e[_mode_ q"
-# _mode_ is one of:
-# 0  ⇒  blinking block.
-# 1  ⇒  blinking block (default).
-# 2  ⇒  steady block.
-# 3  ⇒  blinking underline.
-# 4  ⇒  steady underline.
-# 5  ⇒  blinking bar, xterm.
-# 6  ⇒  steady bar, xterm.
+bindkey -M vicmd "^[[A" history-substring-search-up
+bindkey -M viins "^[[A" history-substring-search-up
+bindkey -M vicmd "^[[B" history-substring-search-down
+bindkey -M viins "^[[B" history-substring-search-down
 
 # set prompt and cursor.
 prompt edward yellow
@@ -63,3 +44,9 @@ source /usr/share/autojump/autojump.zsh
 
 # check if ${ZDOTDIR}/.zcompdump needs to be (re)compiled
 zcompare ${ZDOTDIR}/.zcompdump &!
+
+# highlighting plugin -- must be sourced last
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets cursor)
+ZSH_HIGHLIGHT_STYLES[cursor]='fg=226'
+
