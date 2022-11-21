@@ -1,8 +1,9 @@
 #!/bin/zsh
 
 fpath=("$ZSH" "$fpath[@]")
-autoload -Uz promptinit; promptinit
+autoload -Uz promptinit add-zsh-hook
 autoload -Uz check_invoice nms
+promptinit
 
 # Set language environment if it is not set
 export LANG=${LANG:-en_US.UTF-8}
