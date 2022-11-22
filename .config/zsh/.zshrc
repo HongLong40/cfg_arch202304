@@ -53,3 +53,6 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets cursor)
 ZSH_HIGHLIGHT_STYLES[cursor]='fg=226'
 
+# disable highlighting for pasted strings
+zle_highlight+=('paste:none')
+
