@@ -56,3 +56,7 @@ ZSH_HIGHLIGHT_STYLES[cursor]='fg=226'
 # disable highlighting for pasted strings
 zle_highlight+=('paste:none')
 
+# source key bindings and completion for fzf
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
+
