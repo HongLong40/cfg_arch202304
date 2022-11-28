@@ -15,7 +15,6 @@ source ${ZSH}/aliases.zsh
 source ${ZSH}/directories.zsh
 source ${ZSH}/history.zsh
 source ${ZSH}/functions.zsh
-source ${ZSH}/termsupport.zsh
 
 # history search plugin
 source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
