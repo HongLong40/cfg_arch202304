@@ -9,7 +9,8 @@ set clipboard^=unnamed,unnamedplus
 syntax on
 
 " ----------------------------------------------------------------------------
-" --- Color scheme, highlights, font and cursors -----------------------------
+"   Color scheme, highlights, font and cursors
+" ----------------------------------------------------------------------------
 colorscheme industry
 "highlight Normal guifg=#cfcfcf guibg=#010e17
 highlight Normal guifg=#cfcfcf guibg=#01101c ctermbg=234
@@ -23,11 +24,8 @@ highlight SpecialKey guifg=orange
 highlight StatusLine gui=reverse guifg=#00bb00 cterm=reverse ctermfg=DarkGreen
 
 if has('linux')
-    " set guifont=Input\ Mono\ Light\ 11
-    " set guifont=Cascadia\ Mono\ PL\ 12
     set guifont=JetBrains\ Mono\ Light\ 12
 else
-    " set guifont=InputMono_Light:h11:cANSI:qDRAFT
     set guifont=Cascadia_Mono:h12:cANSI:qDEFAULT
 endif
 
@@ -35,14 +33,31 @@ set cursorline
 set guicursor=n-v-c:block-Cursor,ve:ver35-Cursor,o:hor50-Cursor,i-ci:hor10-iCursor,r-cr:hor20-iCursor,a:blinkon0
 set scrolloff=5
 
-" --- Global variables -------------------------------------------------------
+" ----------------------------------------------------------------------------
+"   Global variables
+" ----------------------------------------------------------------------------
 let g:rainbow_active = 1
 let g:sql_type_default = 'sqlserver'
+
+" ----------------------------------------------------------------------------
+"   netrw defaults (no banner, tree list)
+" ----------------------------------------------------------------------------
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+"let g:netrw_browse_split = 4
+"let g:netrw_altv = 1
+"let g:netrw_winsize = 25
+"#augroup ProjectDrawer
+"#  autocmd!
+"#  autocmd VimEnter * :Vexplore
+"#augroup END 0
 
 set timeoutlen=2000
 set printoptions=left:20pt,right:20pt
 
-" —-- Mappings —--------------------------------------------------------------
+" ----------------------------------------------------------------------------
+"   Mappings
+" ----------------------------------------------------------------------------
 let mapleader = " "
 nnoremap <silent> <leader>cc :set invcursorcolumn
 nnoremap <silent> <leader>nn :set invnumber invrelativenumber
@@ -56,8 +71,14 @@ nnoremap ; :
 vnoremap ; :
 vnoremap <silent> td :s/\[ \]/\[✓\]/
 vnoremap <silent> tu :s/\[✓\]/\[ \]/
+map <esc>[1;5D <C-Left>
+map <esc>[1;5C <C-Right>
+imap <esc>[1;5D <C-Left>
+imap <esc>[1;5C <C-Right>
 
-" --- Status Line ------------------------------------------------------------
+" ----------------------------------------------------------------------------
+"   Status Line
+" ----------------------------------------------------------------------------
 set laststatus=2
 set statusline=
 set statusline+=\ %n\ -\ %<%f%h%M
@@ -67,7 +88,9 @@ set statusline+=:%{&fileformat}\ %y
 set statusline+=\ │\ %5.5l:%-3.3v
 set statusline+=\ 
 
-" --- Settings (general) -----------------------------------------------------
+" ----------------------------------------------------------------------------
+"   Settings (general)
+" ----------------------------------------------------------------------------
 set splitbelow splitright
 set title
 set autoindent
@@ -79,17 +102,23 @@ set backspace=indent,eol,start
 "set listchars=eol:¶,tab:>·,trail:~,extends:>,precedes:<,space:⋅
 set listchars=eol:¬,tab:⭾⋅,trail:~,extends:>,precedes:<,space:·
 
-" —-- Folding ----------------------------------------------------------------
+" ----------------------------------------------------------------------------
+"   Folding
+" ----------------------------------------------------------------------------
 set foldmethod=marker
 set foldmarker=--{,--}
 
-" --- Abbreviations and Ligatures --------------------------------------------
+" ----------------------------------------------------------------------------
+"   Abbreviations and Ligatures
+" ----------------------------------------------------------------------------
 iabbrev ... …
 iabbrev ->  →
 iabbrev bbb [ ]
 iabbrev bvb [✓]
 
-" —-- Window Navigation —-----------------------------------------------------
+" ----------------------------------------------------------------------------
+"   Window Navigation
+" ----------------------------------------------------------------------------
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
