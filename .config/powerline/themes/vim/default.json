@@ -130,12 +130,10 @@
 			{
 				"function": "line_current",
 				"draw_soft_divider": false,
-				"width": 3,
 				"align": "r"
 			},
             {   "function": "line_count",
                 "draw_soft_divider": false,
-                "width":3,
                 "align": "l",
                 "before": "|"
             }

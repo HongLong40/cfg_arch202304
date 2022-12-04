@@ -1,9 +1,12 @@
+" ----------------------------------------------------------------------------
+"   .vimrc for Linux BEL7876302D
+" ----------------------------------------------------------------------------
 set encoding=utf-8
 scriptencoding utf-8
 filetype indent on
 set hidden
 set nocompatible
-"set nomodeline
+set noshowmode
 set clipboard^=unnamed,unnamedplus
 
 syntax on
@@ -12,7 +15,6 @@ syntax on
 "   Color scheme, highlights, font and cursors
 " ----------------------------------------------------------------------------
 colorscheme industry
-"highlight Normal guifg=#cfcfcf guibg=#010e17
 highlight Normal guifg=#cfcfcf guibg=#01101c ctermbg=234
 highlight LineNr guifg=DarkYellow
 highlight CursorLineNr gui=none guifg=red cterm=none ctermfg=darkred
@@ -23,15 +25,11 @@ highlight MatchParen guibg=DarkBlue
 highlight SpecialKey guifg=orange
 highlight StatusLine gui=reverse guifg=#00bb00 cterm=reverse ctermfg=DarkGreen
 
-if has('linux')
-    set guifont=JetBrains\ Mono\ Light\ 12
-else
-    set guifont=Cascadia_Mono:h12:cANSI:qDEFAULT
-endif
-
 set cursorline
-set guicursor=n-v-c:block-Cursor,ve:ver35-Cursor,o:hor50-Cursor,i-ci:hor10-iCursor,r-cr:hor20-iCursor,a:blinkon0
 set scrolloff=5
+
+set guifont=JetBrains\ Mono\ Light\ 12
+set guicursor=n-v-c:block-Cursor,ve:ver35-Cursor,o:hor50-Cursor,i-ci:hor10-iCursor,r-cr:hor20-iCursor,a:blinkon0
 
 " ----------------------------------------------------------------------------
 "   Global variables
@@ -51,9 +49,6 @@ let g:netrw_liststyle = 3
 "#  autocmd!
 "#  autocmd VimEnter * :Vexplore
 "#augroup END 0
-
-set timeoutlen=2000
-set printoptions=left:20pt,right:20pt
 
 " ----------------------------------------------------------------------------
 "   Mappings
@@ -77,16 +72,16 @@ imap <esc>[1;5D <C-Left>
 imap <esc>[1;5C <C-Right>
 
 " ----------------------------------------------------------------------------
-"   Status Line
+"   Status Line (will be using powerline.vim plugin)
 " ----------------------------------------------------------------------------
 set laststatus=2
-set statusline=
-set statusline+=\ %n\ -\ %<%f%h%M
-set statusline+=%=
-set statusline+=%{&fileencoding?&fileencoding:&encoding}
-set statusline+=:%{&fileformat}\ %y
-set statusline+=\ │\ %5.5l:%-3.3v
-set statusline+=\ 
+"set statusline=
+"set statusline+=\ %n\ -\ %<%f%h%M
+"set statusline+=%=
+"set statusline+=%{&fileencoding?&fileencoding:&encoding}
+"set statusline+=:%{&fileformat}\ %y
+"set statusline+=\ │\ %5.5l:%-3.3v
+"set statusline+=\ 
 
 " ----------------------------------------------------------------------------
 "   Settings (general)
@@ -99,8 +94,9 @@ set showmatch
 set tabstop=4 softtabstop=4 smarttab shiftwidth=4 expandtab
 set ignorecase smartcase
 set backspace=indent,eol,start
-"set listchars=eol:¶,tab:>·,trail:~,extends:>,precedes:<,space:⋅
 set listchars=eol:¬,tab:⭾⋅,trail:~,extends:>,precedes:<,space:·
+set timeoutlen=2000
+set printoptions=left:20pt,right:20pt
 
 " ----------------------------------------------------------------------------
 "   Folding
@@ -125,11 +121,6 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <C-a> ggVG
 
-"if !has('gui_running')
-"    let g:powerline_loaded = 0
-"    set showmode
-"endif
-
 if has('gui_running')
     " toolbar and scrollbars
     set guioptions-=T     " remove toolbar
@@ -139,4 +130,3 @@ if has('gui_running')
     set guioptions-=h     " only calculate bottom scroll size of current line
 endif
 
-set noshowmode
