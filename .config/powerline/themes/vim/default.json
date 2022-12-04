@@ -113,9 +113,19 @@
 				"priority": 30
 			},
 			{
+				"function": "virtcol_current",
+                "display": true,
+				"draw_soft_divider": true,
+                "width": 3,
+				"priority": 20,
+				"align": "r",
+                "after": ","
+			},
+            {
 				"type": "string",
 				"name": "line_current_symbol",
-				"highlight_groups": ["line_current_symbol", "line_current"]
+				"highlight_groups": ["line_current_symbol", "line_current"],
+                "display": false
 			},
 			{
 				"function": "line_current",
@@ -128,16 +138,7 @@
                 "width":3,
                 "align": "l",
                 "before": "|"
-            },
-			{
-				"function": "virtcol_current",
-                "display": true,
-				"draw_soft_divider": false,
-				"priority": 20,
-				"before": ":",
-				"width": 3,
-				"align": "l"
-			}
+            }
 		]
 	}
 }
