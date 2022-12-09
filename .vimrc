@@ -66,10 +66,10 @@ nnoremap ; :
 vnoremap ; :
 vnoremap <silent> td :s/\[ \]/\[✓\]/
 vnoremap <silent> tu :s/\[✓\]/\[ \]/
-map <esc>[1;5D <C-Left>
-map <esc>[1;5C <C-Right>
-imap <esc>[1;5D <C-Left>
-imap <esc>[1;5C <C-Right>
+"map <esc>[1;5D <C-Left>
+"map <esc>[1;5C <C-Right>
+"imap <esc>[1;5D <C-Left>
+"imap <esc>[1;5C <C-Right>
 
 " ----------------------------------------------------------------------------
 "   Status Line (will be using powerline.vim plugin)
@@ -95,7 +95,7 @@ set tabstop=4 softtabstop=4 smarttab shiftwidth=4 expandtab
 set ignorecase smartcase
 set backspace=indent,eol,start
 set listchars=eol:¬,tab:⭾⋅,trail:~,extends:>,precedes:<,space:·
-set timeoutlen=2000
+set notimeout ttimeout ttimeoutlen=100
 set printoptions=left:20pt,right:20pt
 
 " ----------------------------------------------------------------------------
@@ -111,6 +111,16 @@ iabbrev ... …
 iabbrev ->  →
 iabbrev bbb [ ]
 iabbrev bvb [✓]
+
+" ----------------------------------------------------------------------------
+"   Enable modified arrow keys, see  :help arrow_modifiers
+" ----------------------------------------------------------------------------
+if !has('gui_running') && &term =~ '^\(alacritty\|xterm\)'
+    execute "silent! set <xUp>=\<Esc>[@;*A"
+    execute "silent! set <xDown>=\<Esc>[@;*B"
+    execute "silent! set <xRight>=\<Esc>[@;*C"
+    execute "silent! set <xLeft>=\<Esc>[@;*D"
+endif
 
 " ----------------------------------------------------------------------------
 "   Window Navigation
