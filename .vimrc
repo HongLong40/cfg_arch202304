@@ -62,14 +62,8 @@ nnoremap <silent> <leader>w  :w
 nnoremap gb :ls:b 
 nnoremap <silent> td :s/\[ \]/\[✓\]/j
 nnoremap <silent> tu :s/\[✓\]/\[ \]/
-nnoremap ; :
-vnoremap ; :
 vnoremap <silent> td :s/\[ \]/\[✓\]/
 vnoremap <silent> tu :s/\[✓\]/\[ \]/
-"map <esc>[1;5D <C-Left>
-"map <esc>[1;5C <C-Right>
-"imap <esc>[1;5D <C-Left>
-"imap <esc>[1;5C <C-Right>
 
 " ----------------------------------------------------------------------------
 "   Status Line (will be using powerline.vim plugin)
