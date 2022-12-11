@@ -59,11 +59,11 @@ nnoremap <silent> <leader>nn :set invnumber invrelativenumber
 nnoremap <silent> <leader>rt :RainbowToggle
 nnoremap <silent> <leader>sc :set invlist
 nnoremap <silent> <leader>w  :w
-nnoremap gb :ls:b 
-nnoremap <silent> td :s/\[ \]/\[✓\]/j
-nnoremap <silent> tu :s/\[✓\]/\[ \]/
-vnoremap <silent> td :s/\[ \]/\[✓\]/
-vnoremap <silent> tu :s/\[✓\]/\[ \]/
+nnoremap <silent> <leader>gb :ls:b 
+nnoremap <silent> <leader>td :s/\[ \]/\[✓\]/j
+nnoremap <silent> <leader>tu :s/\[✓\]/\[ \]/
+vnoremap <silent> <leader>td :s/\[ \]/\[✓\]/
+vnoremap <silent> <leader>tu :s/\[✓\]/\[ \]/
 
 " ----------------------------------------------------------------------------
 "   Status Line (will be using powerline.vim plugin)
