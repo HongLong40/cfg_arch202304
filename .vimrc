@@ -54,12 +54,13 @@ let g:netrw_liststyle = 3
 "   Mappings
 " ----------------------------------------------------------------------------
 let mapleader = " "
+nnoremap <leader>gb :ls:b 
 nnoremap <silent> <leader>cc :set invcursorcolumn
 nnoremap <silent> <leader>nn :set invnumber invrelativenumber
 nnoremap <silent> <leader>rt :RainbowToggle
 nnoremap <silent> <leader>sc :set invlist
 nnoremap <silent> <leader>w  :w
-nnoremap <silent> <leader>gb :ls:b 
+nnoremap <silent> <leader>nh :nohls
 nnoremap <silent> <leader>td :s/\[ \]/\[✓\]/j
 nnoremap <silent> <leader>tu :s/\[✓\]/\[ \]/
 vnoremap <silent> <leader>td :s/\[ \]/\[✓\]/
@@ -92,6 +93,16 @@ set listchars=eol:¬,tab:⭾⋅,trail:~,extends:>,precedes:<,space:·
 set notimeout ttimeout ttimeoutlen=100
 set printoptions=left:20pt,right:20pt
 
+set hlsearch incsearch
+
+augroup HLSearchToggle
+  autocmd!
+  autocmd InsertEnter * :setlocal nohlsearch
+  autocmd InsertLeave * :setlocal hlsearch
+augroup END
+
+set wildmenu wildoptions=pum
+
 " ----------------------------------------------------------------------------
 "   Folding
 " ----------------------------------------------------------------------------
@@ -110,10 +121,10 @@ iabbrev bvb [✓]
 "   Enable modified arrow keys, see  :help arrow_modifiers
 " ----------------------------------------------------------------------------
 if !has('gui_running') && &term =~ '^\(alacritty\|xterm\)'
-    execute "silent! set <xUp>=\<Esc>[@;*A"
-    execute "silent! set <xDown>=\<Esc>[@;*B"
-    execute "silent! set <xRight>=\<Esc>[@;*C"
-    execute "silent! set <xLeft>=\<Esc>[@;*D"
+    silent! set <xUp>=[@;*A
+    silent! set <xDown>=[@;*B
+    silent! set <xRight>=[@;*C
+    silent! set <xLeft>=[@;*D
 endif
 
 " ----------------------------------------------------------------------------
