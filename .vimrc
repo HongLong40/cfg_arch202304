@@ -65,6 +65,7 @@ nnoremap <silent> <leader>td :s/\[ \]/\[✓\]/j
 nnoremap <silent> <leader>tu :s/\[✓\]/\[ \]/
 vnoremap <silent> <leader>td :s/\[ \]/\[✓\]/
 vnoremap <silent> <leader>tu :s/\[✓\]/\[ \]/
+vnoremap <silent> <leader>p "_dP
 
 " ----------------------------------------------------------------------------
 "   Status Line (will be using powerline.vim plugin)
@@ -145,3 +146,4 @@ if has('gui_running')
     set guioptions-=h     " only calculate bottom scroll size of current line
 endif
 
+" vim:nowrap:
