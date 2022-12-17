@@ -67,6 +67,17 @@ vnoremap <silent> <leader>td :s/\[ \]/\[✓\]/
 vnoremap <silent> <leader>tu :s/\[✓\]/\[ \]/
 vnoremap <silent> <leader>p "_dP
 
+
+" ----------------------------------------------------------------------------
+"   Auto-complete
+" ----------------------------------------------------------------------------
+inoremap ( ()<Left>
+inoremap { {}<Left>
+inoremap [ []<Left>
+inoremap < <><Left>
+inoremap " ""<Left>
+inoremap ' ''<Left>
+
 " ----------------------------------------------------------------------------
 "   Status Line (will be using powerline.vim plugin)
 " ----------------------------------------------------------------------------
@@ -126,6 +137,15 @@ if !has('gui_running') && &term =~ '^\(alacritty\|xterm\)'
     silent! set <xDown>=[@;*B
     silent! set <xRight>=[@;*C
     silent! set <xLeft>=[@;*D
+endif
+
+" ----------------------------------------------------------------------------
+"   Set cursor shape for insert mode (vertical bar) and other modes (underscore)
+" ----------------------------------------------------------------------------
+
+if !has('gui_running')
+    let &t_SI = "\e[6 q"
+    let &t_EI = "\e[4 q"
 endif
 
 " ----------------------------------------------------------------------------

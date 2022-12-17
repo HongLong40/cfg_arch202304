@@ -10,6 +10,6 @@
 	editor = vim
 	pager = bat
 [diff]
-	tool = vscode
-[difftool "vscode"]
-	cmd = "code --wait --diff $LOCAL $REMOTE"
+	tool = vim
+[difftool "vim"]
+	cmd = "vim -d $LOCAL $REMOTE"
