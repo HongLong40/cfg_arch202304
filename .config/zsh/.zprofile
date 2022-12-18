@@ -30,7 +30,6 @@ export LESSHISTFILE=-
 # default editor
 export EDITOR=vim
 export VISUAL=vim
-export VIMINIT='let $MYVIMRC="$HOME/.config/vim/vimrc" | source $MYVIMRC'
 
 # hostname
 export HOSTNAME=$(</etc/hostname)

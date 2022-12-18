@@ -60,12 +60,7 @@ highlight Normal       guifg=#cfcfcf guibg=#01101c ctermbg=234
 highlight CursorLine   guibg=Grey15 cterm=none ctermbg=18
 highlight CursorLineNr gui=none guifg=red cterm=none ctermfg=darkred
 highlight LineNr       guifg=DarkYellow ctermfg=229
-
-augroup Statement
-    autocmd!
-    autocmd BufRead,BufEnter *      :highlight Statement ctermfg=none
-    autocmd BufRead,BufEnter *.sql  :highlight Statement ctermfg=Blue
-augroup END
+highlight Statement    ctermfg=none
 
 " Mappings
 " Note: <leader>gb has an intentional trailing space as part of its
