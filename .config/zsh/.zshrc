@@ -2,8 +2,12 @@
 
 fpath=("$ZSH" "$fpath[@]")
 autoload -Uz promptinit add-zsh-hook
-autoload -Uz check_invoice nms
 promptinit
+
+# autoload custom functions
+local -a aufn=( $(<${ZSH}/autoload) )
+autoload -Uz ${aufn}
+unset aufn
 
 # Load completions - must be loaded before other custom configurations
 source ${ZSH}/completion.zsh
