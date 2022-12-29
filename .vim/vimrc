@@ -63,11 +63,9 @@ highlight LineNr       guifg=DarkYellow ctermfg=229
 highlight Statement    ctermfg=none
 
 " Mappings
-" Note: <leader>gb has an intentional trailing space as part of its
-"       mapping
 let mapleader = " "
 nnoremap <leader>fzf :FZF
-nnoremap <leader>gb :ls:b 
+nnoremap <leader>gb :ls:b
 nnoremap <silent> <leader>cc :set invcursorcolumn
 nnoremap <silent> <leader>nn :set invnumber invrelativenumber
 nnoremap <silent> <leader>rt :RainbowToggle
