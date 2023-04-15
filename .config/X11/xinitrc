@@ -37,7 +37,11 @@ greenclip daemon &
 numlockx &
 
 # set screen layout
-~/.screenlayout/display.sh
+~/.screenlayout/display_laptop.sh
+#date > $HOME/screen.txt
+#xrandr 
+#date >> $HOME/screen.txt
+
 
 # run picom
 picom -b
