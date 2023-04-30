@@ -35,7 +35,7 @@ export VISUAL=vim
 export HOSTNAME=$(</etc/hostname)
 
 # virsh: allow user to run without sudo
-export VIRSH_DEFAULT_CONNECT_URI="qemu:///system"
+export LIBVIRT_DEFAULT_URI="qemu:///system"
 
 # Set language environment if it is not set
 export LANG=${LANG:-en_US.UTF-8}
